@@ -1,0 +1,53 @@
+{
+  "hit-die": "8",
+  "weapon-num": 4,
+  "proficiencies": [
+    "light-armour",
+    "simple-weapons"
+  ],
+  "saves": [
+    "dex",
+    "int"
+  ],
+  "skills": [
+    "acrobatics",
+    "athletics",
+    "deception",
+    "insight",
+    "intimidation",
+    "investigation",
+    "perception",
+    "performance",
+    "persuasion",
+    "sleight",
+    "stealth"
+  ],
+  "weapon-prof": [
+    "hand crossbow",
+    "longsword",
+    "rapier",
+    "shortsword"
+  ],
+  "tools": [
+    "Thieves' Tools"
+  ],
+  "has-spell-list": "n",
+  "paths": {
+    "assassin": {
+      "features": [
+        "<b><i>Assassinate</i></b>. You have advantage on attack rolls against any creature that hasn't taken a turn in combat yet. In addition, any hit you score against a surprised creature is a critical hit.",
+        "<b><i>Infiltration Expert</i></b>. You can unfailingly create false identities for yourself. You must spend seven days and 25gp to establish your identity. This cannot be someone else's identity. Creatures believe you to be this person until given obvious reason not to.",
+        "<b><i>Impostor</i></b>. You can unerringly mimic another person's speech, writing, and behavior. You must spend 3 hours observing your mark. You have advantage on all deception checks if something alerts a creature.",
+        "<b><i>Death Strike</i></b>. When you attack and hit a creature that is surprised, it must make a CON save (DC 8 + DEX + proficiency bonus) or take double the damage of the hit."
+      ],
+      "levels": {
+        "3": {
+          "tools": [
+            "Disguise Kit",
+            "Poisoner's Kit"
+          ]
+        }
+      }
+    }
+  }
+}

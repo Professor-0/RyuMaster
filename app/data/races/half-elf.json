@@ -1,0 +1,19 @@
+{
+  "traits": [
+    "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    "<b><i>Fey Ancestry</i></b>: You have advantage on saves against being charmed, and magic can't put you to sleep."
+  ],
+  "speed": "30",
+  "choose": {
+    "language": "1",
+    "asi": "2",
+    "skill": "2"
+  },
+  "languages": [
+    "Common",
+    "Elvish"
+  ],
+  "asi": {
+    "cha": "2"
+  }
+}

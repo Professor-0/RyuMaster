@@ -1,0 +1,19 @@
+{
+  "traits": [
+    "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    "<b><i>Relentless Endurance</i></b>: When you are reduced to 0 hit but not killed outright, you can drop to 1 hit point instead. You cannot use this feature again until you finish a long rest.",
+    "<b><i>Savage Attacks</i></b>: On a melee critical, you can roll an additional one of the weapon's damage die"
+  ],
+  "speed": "30",
+  "languages": [
+    "Common",
+    "Orc"
+  ],
+  "skills": [
+    "intimidation"
+  ],
+  "asi": {
+    "str": "2",
+    "con": "1"
+  }
+}

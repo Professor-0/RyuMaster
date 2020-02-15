@@ -1,0 +1,329 @@
+[
+  {
+    "name": "Hakne",
+    "xp": "Milestones",
+    "alignment": "Neutral Good",
+    "background": "urchin",
+    "armour": "leather",
+    "ac": {
+      "base": 11,
+      "bonus": 0
+    },
+    "class": "barbarian",
+    "path": "berserker",
+    "spells": [
+      "fire_bolt",
+      "fireball",
+      "aid",
+      "shield",
+      "acid_splash"
+    ],
+    "favourite-spells": [
+      "acid_splash"
+    ],
+    "level": "10",
+    "prof": 4,
+    "appearance": "https://static.zerochan.net/Izumi.Konata.full.1886848.jpg",
+    "personality": {
+      "0": "I think anyone who's nice to me is hiding evil intent.",
+      "1": "<b>Change.</b> The low are lifted up, and the high and mighty are brought down. Change is the nature of things. (Chaotic)",
+      "2": "I owe my survival to another urchin who taught me to live on the streets.",
+      "3": "I'd rather kill someone in their sleep then fight fair."
+    },
+    "str": 9,
+    "dex": 19,
+    "con": 12,
+    "wis": 14,
+    "int": 11,
+    "cha": 13,
+    "saves": {
+      "str": {
+        "prof": 0,
+        "bonus": 4
+      },
+      "dex": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "con": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "int": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "wis": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "cha": {
+        "prof": 0,
+        "bonus": 0
+      }
+    },
+    "enemies": "Everyone!",
+    "allies": "No One!",
+    "backpack": [
+      "Explorer's-Pack"
+    ],
+    "backstory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat vitae nisl fringilla pulvinar. Curabitur at ex augue. Sed aliquet faucibus consectetur. Sed libero velit, efficitur ut tincidunt eu, mattis nec felis. Quisque euismod velit eu fringilla malesuada. Suspendisse ante enim, dapibus quis eleifend non, porttitor eget eros. Cras faucibus hendrerit efficitur. In vulputate laoreet nunc. Maecenas tortor justo, vulputate eget molestie eu, semper in lorem. Duis eu congue augue, sed venenatis est.",
+    "magic-items": {
+      "Whoops": [
+        "When activated shite hits the fan",
+        true
+      ]
+    },
+    "skills": {
+      "acrobatics": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "animal": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "arcana": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "athletics": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "deception": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "history": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "insight": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "intimidation": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "investigation": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "medicine": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "nature": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "perception": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "performance": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "persuasion": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "religion": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "sleight": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "stealth": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "survival": {
+        "prof": 1,
+        "bonus": 0
+      }
+    },
+    "weapons": [
+      "longbow",
+      "dagger",
+      "shortsword"
+    ],
+    "race": "elf",
+    "subrace": "drow"
+  },
+  {
+    "name": "Hakne",
+    "xp": "Milestones",
+    "alignment": "Neutral Good",
+    "background": "urchin",
+    "armour": "leather",
+    "class": "barbarian",
+    "path": "berserker",
+    "spells": [
+      "fire_bolt",
+      "fireball",
+      "aid",
+      "shield",
+      "acid_splash"
+    ],
+    "favourite-spells": [
+      "acid_splash"
+    ],
+    "level": "10",
+    "appearance": "https://static.zerochan.net/Izumi.Konata.full.1886848.jpg",
+    "personality": {
+      "0": "I think anyone who's nice to me is hiding evil intent.",
+      "1": "<b>Change.</b> The low are lifted up, and the high and mighty are brought down. Change is the nature of things. (Chaotic)",
+      "2": "I owe my survival to another urchin who taught me to live on the streets.",
+      "3": "I'd rather kill someone in their sleep then fight fair."
+    },
+    "saves": {
+      "str": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "dex": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "con": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "int": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "wis": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "cha": {
+        "prof": 0,
+        "bonus": 0
+      }
+    },
+    "str": 8,
+    "dex": 19,
+    "con": 12,
+    "wis": 14,
+    "int": 11,
+    "cha": 13,
+    "enemies": "Everyone!",
+    "allies": "No One!",
+    "backpack": [
+      "Explorer's-Pack"
+    ],
+    "backstory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat vitae nisl fringilla pulvinar. Curabitur at ex augue. Sed aliquet faucibus consectetur. Sed libero velit, efficitur ut tincidunt eu, mattis nec felis. Quisque euismod velit eu fringilla malesuada. Suspendisse ante enim, dapibus quis eleifend non, porttitor eget eros. Cras faucibus hendrerit efficitur. In vulputate laoreet nunc. Maecenas tortor justo, vulputate eget molestie eu, semper in lorem. Duis eu congue augue, sed venenatis est.",
+    "expertise": [
+      "stealth"
+    ],
+    "magic-items": {
+      "Whoops": [
+        "When activated shite hits the fan",
+        true
+      ]
+    },
+    "skills": [
+      "survival",
+      "animal"
+    ],
+    "weapons": [
+      "longbow",
+      "dagger",
+      "shortsword"
+    ],
+    "race": "elf",
+    "subrace": "drow"
+  },
+  {
+    "name": "Hakne",
+    "xp": "Milestones",
+    "alignment": "Neutral Good",
+    "background": "urchin",
+    "armour": "leather",
+    "class": "barbarian",
+    "path": "berserker",
+    "spells": [
+      "fire_bolt",
+      "fireball",
+      "aid",
+      "shield",
+      "acid_splash"
+    ],
+    "favourite-spells": [
+      "acid_splash"
+    ],
+    "level": "10",
+    "appearance": "https://static.zerochan.net/Izumi.Konata.full.1886848.jpg",
+    "personality": {
+      "0": "I think anyone who's nice to me is hiding evil intent.",
+      "1": "<b>Change.</b> The low are lifted up, and the high and mighty are brought down. Change is the nature of things. (Chaotic)",
+      "2": "I owe my survival to another urchin who taught me to live on the streets.",
+      "3": "I'd rather kill someone in their sleep then fight fair."
+    },
+    "str": 8,
+    "dex": 19,
+    "con": 12,
+    "wis": 14,
+    "int": 11,
+    "cha": 13,
+    "enemies": "Everyone!",
+    "allies": "No One!",
+    "backpack": [
+      "Explorer's-Pack"
+    ],
+    "backstory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat vitae nisl fringilla pulvinar. Curabitur at ex augue. Sed aliquet faucibus consectetur. Sed libero velit, efficitur ut tincidunt eu, mattis nec felis. Quisque euismod velit eu fringilla malesuada. Suspendisse ante enim, dapibus quis eleifend non, porttitor eget eros. Cras faucibus hendrerit efficitur. In vulputate laoreet nunc. Maecenas tortor justo, vulputate eget molestie eu, semper in lorem. Duis eu congue augue, sed venenatis est.",
+    "expertise": [
+      "stealth"
+    ],
+    "magic-items": {
+      "Whoops": [
+        "When activated shite hits the fan",
+        true
+      ]
+    },
+    "skills": [
+      "survival",
+      "animal"
+    ],
+    "weapons": [
+      "longbow",
+      "dagger",
+      "shortsword"
+    ],
+    "race": "elf",
+    "saves": {
+      "str": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "dex": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "con": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "int": {
+        "prof": 1,
+        "bonus": 0
+      },
+      "wis": {
+        "prof": 0,
+        "bonus": 0
+      },
+      "cha": {
+        "prof": 0,
+        "bonus": 0
+      }
+    },
+    "subrace": "drow"
+  }
+]

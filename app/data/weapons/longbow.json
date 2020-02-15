@@ -1,0 +1,11 @@
+{
+  "ability": "dex",
+  "type": "martial",
+  "range": "ranged",
+  "damage": "1d8",
+  "damage-type": "piercing",
+  "properties": [
+    "heavy",
+    "two-handed"
+  ]
+}

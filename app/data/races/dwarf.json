@@ -1,0 +1,42 @@
+{
+  "traits": [
+    "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    "<b><i>Dwarven Resistance</i></b>: You have advantage on saves against poison, and resistance against poison damage",
+    "<b><i>Stonecunning</i></b>: Whenever you make a history check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check."
+  ],
+  "speed": "25",
+  "languages": [
+    "Common",
+    "Dwarvish"
+  ],
+  "weapons": [
+    "battleaxe",
+    "handaxe",
+    "light_hammer",
+    "warhammer"
+  ],
+  "asi": {
+    "con": "2"
+  },
+  "tools": [
+    "Smith's Tools",
+    "Brewer's Supplies",
+    "Mason's Tools"
+  ],
+  "subraces": {
+    "Hill": {
+      "asi": {
+        "wis": "1"
+      }
+    },
+    "mountain": {
+      "asi": {
+        "str": "2"
+      },
+      "prof": [
+        "light-armour",
+        "medium-armour"
+      ]
+    }
+  }
+}

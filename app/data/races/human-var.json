@@ -1,0 +1,14 @@
+{
+  "traits": [],
+  "speed": "30",
+  "languages": [
+    "Common"
+  ],
+  "choose": {
+    "languages": "1",
+    "asi": "2",
+    "skills": "1",
+    "feats": "1"
+  },
+  "asi": {}
+}

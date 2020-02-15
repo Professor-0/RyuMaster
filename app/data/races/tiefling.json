@@ -1,0 +1,21 @@
+{
+  "traits": [
+    "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    "<b><i>Hellish Resistance</i></b>: You are resistant to fire damage"
+  ],
+  "level": {
+    "base": "<b><i>Infernal Legacy</i></b>: You know the <i>thaumaturgy</i> cantrip.",
+    "3": " You also know the <i>hellish rebuke</i> spell and can cast it once per long rest as a 2nd-level spell. Charisma is your spellcasting ability for this spell.",
+    "5": "You also know the <i>hellish rebuke</i> and <i>darkness</i> spells and can cast one once per long rest as a 2nd-level spell. Charisma is your spellcasting ability for these spells."
+  },
+  "speed": "30",
+  "languages": [
+    "Common",
+    "Infernal"
+  ],
+  "spellCasting": "3,cha",
+  "asi": {
+    "cha": "2",
+    "int": "1"
+  }
+}

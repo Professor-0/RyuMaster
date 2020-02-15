@@ -1,0 +1,46 @@
+{
+  "hit-die": "12",
+  "weapon-num": 5,
+  "proficiencies": [
+    "light-armour",
+    "simple-weapons",
+    "medium-armour",
+    "shields",
+    "martial-weapons"
+  ],
+  "saves": [
+    "str",
+    "con"
+  ],
+  "skills": [
+    "animal",
+    "athletics",
+    "intimidation",
+    "nature",
+    "perception",
+    "survival"
+  ],
+  "weapon-prof": [],
+  "tools": [],
+  "has-spell-list": "n",
+  "paths": {
+    "berserker": {
+      "features": [
+        "<b><i>Frenzy</i></b>. Starting at 3rd level, you can go into a frenzy when you rage. if you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.",
+        "<b><i>Mindless Rage</i></b>. Beginning at 6th level, you can't be charmed or frightened while raging. If you are charmed or frightened when you enter your rage the effect is suspended for the duration of the rage.",
+        "<b><i>Intimidating Presence</i></b>. You can use your action to frighten someone. Choose one creature within 30ft that you can see to target. If the creature can see or hear you, it must succeed on a WIS save (DC 8 + your proficiency bonus + charisma) or be frightened of you until the end of your next turn. On subsequent turns you can use an action to extend the effect. The effect ends if a creature ends its turn out of line of sight or more than 60ft away from you. If the creature succeeds on the save, you can't use this feature on that creature again for 24 hours.",
+        "<b><i>Retaliation</i></b>. When you take damage from a creature within 5ft of you, you cans use your reaction to make a melee weapon attack attack against that creature."
+      ],
+      "levels": []
+    },
+    "totem-bear": {
+      "features": [
+        "<b><i>Spirit Seeker</i></b>. Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. You can cast <i>beast sense</i> and <i>speak with animals</i> spells, but only as rituals.<br><b><i>Totem Spirit</i></b>. You can gain minor physical attributes of a bear.",
+        "<b><i>Aspects of t</i></b>. ",
+        "<b><i>Intimidating Presence</i></b>. You can use your action to frighten someone. Choose one creature within 30ft that you can see to target. If the creature can see or hear you, it must succeed on a WIS save (DC 8 + your proficiency bonus + charisma) or be frightened of you until the end of your next turn. On subsequent turns you can use an action to extend the effect. The effect ends if a creature ends its turn out of line of sight or more than 60ft away from you. If the creature succeeds on the save, you can't use this feature on that creature again for 24 hours.",
+        "<b><i>Retaliation</i></b>. When you take damage from a creature within 5ft of you, you cans use your reaction to make a melee weapon attack attack against that creature."
+      ],
+      "levels": []
+    }
+  }
+}

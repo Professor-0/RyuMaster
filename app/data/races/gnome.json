@@ -1,0 +1,38 @@
+{
+  "traits": [
+    "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    "<b><i>Gnome Cunning</i></b>: You have advantage on all INT, WIS, and CHA saves against magic"
+  ],
+  "speed": "25",
+  "languages": [
+    "Common",
+    "Gnomish"
+  ],
+  "asi": {
+    "int": "2"
+  },
+  "subraces": {
+    "forest": {
+      "asi": {
+        "dex": "1"
+      },
+      "traits": [
+        "<b><i>Natural Illusionist</i></b>: You know the <i>minor illusion</i> cantrip. Intelligence is spellcasting attribute for it.",
+        "<b><i>Speak with Small Beasts</i></b>: Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts."
+      ],
+      "spellCasting": "int"
+    },
+    "rock": {
+      "asi": {
+        "con": "1"
+      },
+      "traits": [
+        "<b><i>Artificer's Lore</i></b>: Whenever you make a History check related to magic items, alchemical objects, or technological devices, you have double proficiency.",
+        "<b><i>Tinker</i></b>: Using Tinker's tools, you can spend 1 hour and 10gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). It requires daily maintenance of 1 hour. When the device breaks or you dismantle it, you can regain the materials used to create it. You can have up to three such devices active at a time. You can create a,<br><i>Clockwork Toy</i>. When placed on ground it moves 5ft in a random direction and makes noises.<br><i>Fire Starter</i>. Action to use. Can light a candle, torch or campfire.<br><i>Music Box</i>. Plays music when open."
+      ],
+      "tools": [
+        "Tinker's Tools"
+      ]
+    }
+  }
+}

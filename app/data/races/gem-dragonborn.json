@@ -1,0 +1,21 @@
+{
+  "traits": [
+    "<b><i>Limited Psionics</i></b>: You have 4 psionic charges, which refresh when you finish a long rest. At your DM's discretion, you may learn more psionics through adventure and research. The DC for your psionic saving throws equal 8 + your INT mod + your proficiency bonus.",
+    "<b><i>Gemstone Dragon Mindspeak</i></b>: You can hear the murmurs of gemstone dragon mindspeak within 1 mile."
+  ],
+  "speed": "30",
+  "languages": [
+    "Common",
+    "Draconic"
+  ],
+  "subraces": {},
+  "ac": "1",
+  "psionics": [
+    "flay",
+    "distance"
+  ],
+  "asi": {
+    "int": "2",
+    "wis": "1"
+  }
+}

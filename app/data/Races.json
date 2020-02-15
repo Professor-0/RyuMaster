@@ -1,0 +1,377 @@
+{
+  "dragonborn": {
+    "traits": [
+      "<b><i>Breath Weapon</i></b>: As an action, breath a {0} of {1}. This {0} is {2}. Any creature in area has to make a {3} save. They take {4} damage on a failed save and half as much on a success.",
+      "<b><i>Damage Resistance</i></b>: You have resistance against {1} damage."
+    ],
+    "speed": "30",
+    "languages": [
+      "Common",
+      "Draconic"
+    ],
+    "asi": {
+      "str": "2",
+      "cha": "1"
+    },
+    "subraces": {
+      "black": {
+        "breath": [
+          "line",
+          "acid",
+          "5ft by 30ft",
+          "DEX"
+        ]
+      },
+      "blue": {
+        "breath": [
+          "line",
+          "lightning",
+          "5ft by 30ft",
+          "DEX"
+        ]
+      },
+      "brass": {
+        "breath": [
+          "line",
+          "fire",
+          "5ft by 30ft",
+          "DEX"
+        ]
+      },
+      "bronze": {
+        "breath": [
+          "line",
+          "lightning",
+          "5ft by 30ft",
+          "DEX"
+        ]
+      },
+      "copper": {
+        "breath": [
+          "line",
+          "acid",
+          "5ft by 30ft",
+          "DEX"
+        ]
+      },
+      "gold": {
+        "breath": [
+          "cone",
+          "fire",
+          "15ft long",
+          "DEX"
+        ]
+      },
+      "green": {
+        "breath": [
+          "cone",
+          "poison",
+          "15ft long",
+          "CON"
+        ]
+      },
+      "red": {
+        "breath": [
+          "cone",
+          "fire",
+          "15ft long",
+          "DEX"
+        ]
+      },
+      "silver": {
+        "breath": [
+          "cone",
+          "cold",
+          "15ft long",
+          "CON"
+        ]
+      },
+      "white": {
+        "breath": [
+          "cone",
+          "cold",
+          "15ft long",
+          "CON"
+        ]
+      }
+    }
+  },
+  "dwarf": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Dwarven Resistance</i></b>: You have advantage on saves against poison, and resistance against poison damage",
+      "<b><i>Stonecunning</i></b>: Whenever you make a history check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check."
+    ],
+    "speed": "25",
+    "languages": [
+      "Common",
+      "Dwarvish"
+    ],
+    "weapons": [
+      "battleaxe",
+      "handaxe",
+      "light_hammer",
+      "warhammer"
+    ],
+    "asi": {
+      "con": "2"
+    },
+    "tools": [
+      "Smith's Tools",
+      "Brewer's Supplies",
+      "Mason's Tools"
+    ],
+    "subraces": {
+      "Hill": {
+        "asi": {
+          "wis": "1"
+        }
+      },
+      "mountain": {
+        "asi": {
+          "str": "2"
+        },
+        "prof": [
+          "light-armour",
+          "medium-armour"
+        ]
+      }
+    }
+  },
+  "elf": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Fey Ancestry</i></b>: You have advantage on saves against being charmed, and magic can't put you to sleep.",
+      "<b><i>Trance</i></b>: Elves meditate deeply, remaining semiconscious, for 4 hours a day in place of sleeping. You gain the same benefit that a human does from 8 hours of sleep."
+    ],
+    "speed": "30",
+    "languages": [
+      "Common",
+      "Elvish"
+    ],
+    "skills": [
+      "perception"
+    ],
+    "asi": {
+      "dex": "2"
+    },
+    "subraces": {
+      "wood": {
+        "traits": [
+          "<b><i>Mask of the Wild</i></b>: You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+        ],
+        "asi": {
+          "wis": "1"
+        },
+        "speed": "5",
+        "weapons": [
+          "longbow",
+          "shortbow",
+          "longsword",
+          "shortsword"
+        ]
+      },
+      "high": {
+        "asi": {
+          "int": "1"
+        },
+        "weapons": [
+          "longbow",
+          "shortbow",
+          "longsword",
+          "shortsword"
+        ],
+        "cantrip": "1",
+        "spellCasting": "int",
+        "languages": [
+          "_any_"
+        ]
+      },
+      "drow": {
+        "asi": {
+          "cha": "1"
+        },
+        "traits": [
+          "<b><i>Superior Darkvision</i></b>. Your darkvision has a range of 120 feet.",
+          "<b><i>Sunlight Sensitivity</i></b>. You have disadvantage on attack rolls and on perception checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.",
+          "<b><i>Drow Magic</i></b>. You know the <i>dancing lights</i> cantrip. At 3rd level, you can cast the <i>faerie fire</i> spell once per long rest. At 5th level you can alternatively cast <i>darkness</i>. Charisma is your spellcasting ability for these spells"
+        ],
+        "spellCasting": "cha",
+        "weapons": [
+          "rapier",
+          "shortsword",
+          "hand_crossbow"
+        ]
+      }
+    }
+  },
+  "gemstone-dragonborn": {
+    "traits": [
+      "<b><i>Limited Psionics</i></b>: You have 4 psionic charges, which refresh when you finish a long rest. At your DM's discretion, you may learn more psionics through adventure and research. The DC for your psionic saving throws equal 8 + your INT mod + your proficiency bonus.",
+      "<b><i>Gemstone Dragon Mindspeak</i></b>: You can hear the murmurs of gemstone dragon mindspeak within 1 mile."
+    ],
+    "speed": "30",
+    "languages": [
+      "Common",
+      "Draconic"
+    ],
+    "subraces": {},
+    "ac": "1",
+    "psionics": [
+      "flay",
+      "distance"
+    ],
+    "asi": {
+      "int": "2",
+      "wis": "1"
+    }
+  },
+  "gnome": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Gnome Cunning</i></b>: You have advantage on all INT, WIS, and CHA saves against magic"
+    ],
+    "speed": "25",
+    "languages": [
+      "Common",
+      "Gnomish"
+    ],
+    "asi": {
+      "int": "2"
+    },
+    "subraces": {
+      "forest": {
+        "asi": {
+          "dex": "1"
+        },
+        "traits": [
+          "<b><i>Natural Illusionist</i></b>: You know the <i>minor illusion</i> cantrip. Intelligence is spellcasting attribute for it.",
+          "<b><i>Speak with Small Beasts</i></b>: Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts."
+        ],
+        "spellCasting": "int"
+      },
+      "rock": {
+        "asi": {
+          "con": "1"
+        },
+        "traits": [
+          "<b><i>Artificer's Lore</i></b>: Whenever you make a History check related to magic items, alchemical objects, or technological devices, you have double proficiency.",
+          "<b><i>Tinker</i></b>: Using Tinker's tools, you can spend 1 hour and 10gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). It requires daily maintenance of 1 hour. When the device breaks or you dismantle it, you can regain the materials used to create it. You can have up to three such devices active at a time. You can create a,<br><i>Clockwork Toy</i>. When placed on ground it moves 5ft in a random direction and makes noises.<br><i>Fire Starter</i>. Action to use. Can light a candle, torch or campfire.<br><i>Music Box</i>. Plays music when open."
+        ],
+        "tools": [
+          "Tinker's Tools"
+        ]
+      }
+    }
+  },
+  "half-elf": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Fey Ancestry</i></b>: You have advantage on saves against being charmed, and magic can't put you to sleep."
+    ],
+    "speed": "30",
+    "choose": {
+      "language": "1",
+      "asi": "2",
+      "skill": "2"
+    },
+    "languages": [
+      "Common",
+      "Elvish"
+    ],
+    "asi": {
+      "cha": "2"
+    }
+  },
+  "half-orc": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Relentless Endurance</i></b>: When you are reduced to 0 hit but not killed outright, you can drop to 1 hit point instead. You cannot use this feature again until you finish a long rest.",
+      "<b><i>Savage Attacks</i></b>: On a melee critical, you can roll an additional one of the weapon's damage die"
+    ],
+    "speed": "30",
+    "languages": [
+      "Common",
+      "Orc"
+    ],
+    "skills": [
+      "intimidation"
+    ],
+    "asi": {
+      "str": "2",
+      "con": "1"
+    }
+  },
+  "halfling": {
+    "traits": [
+      "<b><i>Brave</i></b>: You have advantage on saves against being frightened",
+      "<b><i>Lucky</i></b>: When you roll a 1 on the d20 for an attack roll, ability check or saving throw, you can reroll the die and must use the new roll.",
+      "<b><i>Halfling Nimbleness</i></b>: You can move through the space of any creature that is of a size larger than yours"
+    ],
+    "speed": "25",
+    "languages": [
+      "Common",
+      "Halfling"
+    ],
+    "asi": {
+      "dex": "2"
+    },
+    "subraces": {
+      "lightfoot": {
+        "asi": {
+          "cha": "1"
+        },
+        "traits": [
+          "<b><i>Naturally Stealthy</i></b>: You can attempt to hide when you are obscured only by a creature that is of a larger size."
+        ]
+      },
+      "stout": {
+        "asi": {
+          "con": "1"
+        },
+        "traits": [
+          "<b><i>Stout Resilience</i></b>: You have advantage on saves against poison, and you have resistance against poison damage."
+        ]
+      }
+    }
+  },
+  "human": {
+    "traits": [],
+    "speed": "30",
+    "languages": [
+      "Common"
+    ],
+    "choose": {
+      "languages": "1"
+    },
+    "asi": {
+      "dex": "1",
+      "str": "1",
+      "con": "1",
+      "wis": "1",
+      "int": "1",
+      "cha": "1"
+    }
+  },
+  "tiefling": {
+    "traits": [
+      "<b><i>Darkvision</i></b>: You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+      "<b><i>Hellish Resistance</i></b>: You are resistant to fire damage"
+    ],
+    "level": {
+      "base": "<b><i>Infernal Legacy</i></b>: You know the <i>thaumaturgy</i> cantrip.",
+      "3": " You also know the <i>hellish rebuke</i> spell and can cast it once per long rest as a 2nd-level spell. Charisma is your spellcasting ability for this spell.",
+      "5": "You also know the <i>hellish rebuke</i> and <i>darkness</i> spells and can cast one once per long rest as a 2nd-level spell. Charisma is your spellcasting ability for these spells."
+    },
+    "speed": "30",
+    "languages": [
+      "Common",
+      "Infernal"
+    ],
+    "spellCasting": "3,cha",
+    "asi": {
+      "cha": "2",
+      "int": "1"
+    }
+  }
+}

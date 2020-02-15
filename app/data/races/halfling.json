@@ -1,0 +1,33 @@
+{
+  "traits": [
+    "<b><i>Brave</i></b>: You have advantage on saves against being frightened",
+    "<b><i>Lucky</i></b>: When you roll a 1 on the d20 for an attack roll, ability check or saving throw, you can reroll the die and must use the new roll.",
+    "<b><i>Halfling Nimbleness</i></b>: You can move through the space of any creature that is of a size larger than yours"
+  ],
+  "speed": "25",
+  "languages": [
+    "Common",
+    "Halfling"
+  ],
+  "asi": {
+    "dex": "2"
+  },
+  "subraces": {
+    "lightfoot": {
+      "asi": {
+        "cha": "1"
+      },
+      "traits": [
+        "<b><i>Naturally Stealthy</i></b>: You can attempt to hide when you are obscured only by a creature that is of a larger size."
+      ]
+    },
+    "stout": {
+      "asi": {
+        "con": "1"
+      },
+      "traits": [
+        "<b><i>Stout Resilience</i></b>: You have advantage on saves against poison, and you have resistance against poison damage."
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "ability": "dex",
+  "type": "simple",
+  "range": "melee",
+  "damage": "1d4",
+  "damage-type": "piercing",
+  "properties": [
+    "light",
+    "finesse",
+    {
+      "thrown": {
+        "range": [
+          "20",
+          "60"
+        ]
+      }
+    }
+  ]
+}
