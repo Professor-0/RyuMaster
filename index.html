@@ -132,7 +132,7 @@
         return word;
     }
 
-    function delete_character(index) {
+    function confirm_delete(index) {
         let chars = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString());
         let confirm = document.createElement('DIV');
         confirm.id = 'confirm';
@@ -141,17 +141,23 @@
                               <div class="top">Delete Character?</div>
                               <div class="body">Are you sure you want to delete ${chars[index].name}?</div>
                               <div class="bottom">
-                                  <div class="button">Yes</div>
-                                  <div class="button">Cancel</div>
+                                  <div class="button" onclick="delete_character(${index})">Yes</div>
+                                  <div class="button" onclick="appClientArea.removeChild(appClientArea.lastChild)">Cancel</div>
                               </div>
                             `;
         appClientArea.appendChild(confirm);
+    }
+
+    function delete_character(index) {
+        let chars = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString());
         chars.splice(index, 1);
-        /*fs.writeFile("./app/data/Characters.json", JSON.stringify(chars), err => {
+        fs.writeFile('./app/data/Characters.json', JSON.stringify(chars), err => {
             if (err) throw err;
-            console.log("Deleted Character");
+            console.log('Deleted Character');
+            appClientArea.removeChild(appClientArea.lastChild);
             change_page('Characters')
-        })*/
+
+        })
     }
 
     function change_page(page) {
@@ -185,7 +191,7 @@
                            <div class="control-board">
                                <div class="ctrl-btn" onclick="open_character(${i})">View</div>
                                <div class="ctrl-btn">Edit</div>
-                               <div class="ctrl-btn" onclick="delete_character(${i})">Delete</div>
+                               <div class="ctrl-btn" onclick="confirm_delete(${i})">Delete</div>
                            </div>
                      </div>`;
             }
@@ -209,7 +215,7 @@
             let current_letter = ' ';
 
             function load_spells() {
-                let i = 3;
+                let i = 3, changed = false;
                 for (const spell in spells) {
                     if (spells.hasOwnProperty(spell)) {
                         i++;
@@ -227,7 +233,7 @@
 
                                 i++;
                             }
-
+                            changed = true;
                             let elem = document.createElement('DIV');
                             elem.className = 'spell-box';
                             elem.id = spell;
@@ -240,13 +246,15 @@
                     }
 
                 }
-                fs.writeFile("./app/pages/Spells.html", appPageHolder.innerHTML, err => {
-                    if (err) throw err;
-                    console.log('Overwrote Spells')
-                })
+                if (changed){
+                    fs.writeFile("./app/pages/Spells.html", appPageHolder.innerHTML, err => {
+                        if (err) throw err;
+                        console.log('Overwrote Spells')
+                    })
+                }
             }
 
-            const timer = setTimeout(load_spells, 10);
+            setTimeout(load_spells, 10);
         }
 
     }
@@ -475,7 +483,6 @@
     }
 
     function scroll_to_letter(letter) {
-        console.log('dd');
         let letter_pos = document.querySelector('#' + letter + '-line');
         if (letter_pos === null) {
             let i = 1;

@@ -645,12 +645,12 @@ div.side-bar::-webkit-scrollbar {
   position: absolute;
   height: 200px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 400px;
-  font-size: 20pt;
+  width: 350px;
+  font-size: 17pt;
   top: 50vh;
   left: 50vw;
   margin-top: -100px;
-  margin-left: -200px;
+  margin-left: -175px;
   background-color: #FFFFFF;
 }
 
@@ -658,18 +658,23 @@ div.side-bar::-webkit-scrollbar {
   color: $text-icons;
   background-color: $dark-primary;
   width: 100%;
-  -webkit-user-drag: element;
-  height: 40px;
-  line-height: 40px;
+  padding-left: 10px;
+  height: 50px;
+  line-height: 50px;
 }
 
 .confirm .body {
   color: $text-icons;
   background-color: $primary;
   width: 100%;
+  padding: 10px;
+  height: 100px;
 }
 
 .confirm .bottom {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   background-color: $text-icons;
@@ -679,4 +684,9 @@ div.side-bar::-webkit-scrollbar {
 .confirm .bottom .button {
   width: 50%;
   text-align: center;
+}
+
+.confirm .bottom .button:hover {
+  background-color: $accent;
+  color: #FFFFFF;
 }
