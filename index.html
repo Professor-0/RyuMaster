@@ -14,6 +14,7 @@
         </div>
         <div class="menu" id="menu">
             <div class="menu-item">Backgrounds</div>
+            <div class="menu-item">Campaigns</div>
             <div class="menu-item">Characters</div>
             <div class="menu-item">Classes</div>
             <div class="menu-item">Feats</div>
@@ -31,9 +32,14 @@
 </div>
 <div class="drag-bar">
     Ryu Master
-    <div id="close" class="caption-btn">&#9587;</div>
-    <div id="max" class="caption-btn">&#9744;</div>
-    <div id="min" class="caption-btn">&#8210;</div>
+    <div id="close" class="caption-btn" onclick="currWindow.close()">&#9587;</div>
+    <div id="max" class="caption-btn" onclick="{
+        if (currWindow.isMaximized()) {
+        currWindow.restore()
+        } else {
+            currWindow.maximize()
+        }}">&#9744;</div>
+    <div id="min" class="caption-btn" onclick="currWindow.minimize()">&#8210;</div>
 </div>
 </body>
 <link rel="stylesheet" href="app/style/main.css">
@@ -53,7 +59,7 @@
     appSideBar.style.width = '40px';
 
 
-    let current_page = '';
+    let current_page = '', windows = [];
 
     function open_bar() {
         if (appSideBar.style.width === '40px') {
@@ -132,40 +138,41 @@
         return word;
     }
 
-    function confirm_delete(index) {
-        let chars = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString());
+    function confirm_delete(type, index) {
+        let data = JSON.parse(fs.readFileSync("app/data/" + type + "s.json").toString());
         let confirm = document.createElement('DIV');
+        console.log(index);
         confirm.id = 'confirm';
         confirm.className = 'confirm';
         confirm.innerHTML = `
-                              <div class="top">Delete Character?</div>
-                              <div class="body">Are you sure you want to delete ${chars[index].name}?</div>
+                              <div class="top">Delete ${type}?</div>
+                              <div class="body">Are you sure you want to delete ${data[index].name}?</div>
                               <div class="bottom">
-                                  <div class="button" onclick="delete_character(${index})">Yes</div>
+                                  <div class="button" onclick="delete_data('${type}', ${index})">Yes</div>
                                   <div class="button" onclick="appClientArea.removeChild(appClientArea.lastChild)">Cancel</div>
                               </div>
                             `;
         appClientArea.appendChild(confirm);
     }
 
-    function delete_character(index) {
-        let chars = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString());
-        chars.splice(index, 1);
-        fs.writeFile('./app/data/Characters.json', JSON.stringify(chars), err => {
+    function delete_data(type, index) {
+        let data = JSON.parse(fs.readFileSync("app/data/" + type + "s.json").toString());
+        data.splice(index, 1);
+        fs.writeFile("app/data/" + type + "s.json", JSON.stringify(data), err => {
             if (err) throw err;
-            console.log('Deleted Character');
+            console.log('Deleted Data');
             appClientArea.removeChild(appClientArea.lastChild);
-            change_page('Characters')
+            change_page(type + 's')
 
         })
     }
 
     function change_page(page) {
-        appPageHolder.innerHTML = fs.readFileSync("./app/pages/" + page + ".html").toString();
+        appPageHolder.innerHTML = fs.readFileSync("app/pages/" + page + ".html").toString();
         current_page = page;
         const appInnerPage = document.querySelector('#' + page);
         if (page === 'Characters') {
-            const char = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString());
+            const char = JSON.parse(fs.readFileSync("app/data/Characters.json").toString());
             let i, c;
             for (i = 0; i < char.length; i++) {
                 c = char[i];
@@ -191,12 +198,12 @@
                            <div class="control-board">
                                <div class="ctrl-btn" onclick="open_character(${i})">View</div>
                                <div class="ctrl-btn">Edit</div>
-                               <div class="ctrl-btn" onclick="confirm_delete(${i})">Delete</div>
+                               <div class="ctrl-btn" onclick="confirm_delete('Character', ${i})">Delete</div>
                            </div>
                      </div>`;
             }
         } else if (page === 'Races') {
-            const races = JSON.parse(fs.readFileSync("./app/data/Races.json").toString());
+            const races = JSON.parse(fs.readFileSync("app/data/Races.json").toString());
             for (const race in races) {
                 if (!races.hasOwnProperty(race)) continue;
                 appInnerPage.innerHTML +=
@@ -209,7 +216,7 @@
                     `
             }
         } else if (page === 'Spells') {
-            const spells = JSON.parse(fs.readFileSync("./app/data/Spells.json").toString());
+            const spells = JSON.parse(fs.readFileSync("app/data/Spells.json").toString());
 
 
             let current_letter = ' ';
@@ -247,7 +254,7 @@
 
                 }
                 if (changed){
-                    fs.writeFile("./app/pages/Spells.html", appPageHolder.innerHTML, err => {
+                    fs.writeFile("app/pages/Spells.html", appPageHolder.innerHTML, err => {
                         if (err) throw err;
                         console.log('Overwrote Spells')
                     })
@@ -255,7 +262,25 @@
             }
 
             setTimeout(load_spells, 10);
-        }
+        } else if (page === 'Campaigns'){
+            const campaigns = JSON.parse(fs.readFileSync("app/data/Campaigns.json").toString());
+            let i, c;
+            for (i = 0; i < campaigns.length; i++) {
+                c = campaigns[i];
+                appInnerPage.innerHTML +=
+                    `<div class="campaign-box" id="${i}">
+                           <div class="name">
+                               <div class="text">${c.name}</div>
+                           </div>
+                           <div class="desc"><div class="text">${c.desc}</div></div>
+                           <div class="control-board">
+                               <div class="ctrl-btn" onclick="open_campaign(${i})">View</div>
+                               <div class="ctrl-btn">Edit</div>
+                               <div class="ctrl-btn" onclick="confirm_delete('Campaign', ${i})">Delete</div>
+                           </div>
+                     </div>`;
+                }
+            }
 
     }
 
@@ -272,7 +297,7 @@
     }
 
     function open_character(index) {
-        const char = JSON.parse(fs.readFileSync("./app/data/Characters.json").toString())[index];
+        const char = JSON.parse(fs.readFileSync("app/data/Characters.json").toString())[index];
         let race, mods = {
             "dex": score_to_mod(char.dex),
             "str": score_to_mod(char.str),
@@ -482,6 +507,13 @@
         `;
     }
 
+    function open_campaign(index){
+        const Campaign = JSON.parse(fs.readFileSync("app/data/Campaigns.json").toString())[index];
+        appPageHolder.innerHTML = fs.readFileSync("app/pages/campaign_board.html").toString();
+        const appInnerPage = appPageHolder.querySelector('#campaign');
+        appInnerPage.innerHTML += `<div class="campaign-title">${Campaign.name}</div>`
+    }
+
     function scroll_to_letter(letter) {
         let letter_pos = document.querySelector('#' + letter + '-line');
         if (letter_pos === null) {
@@ -503,17 +535,32 @@
         letter_pos.scrollIntoView({behavior: "smooth"});
     }
 
-    appCloseBtn.addEventListener('click', () => {
-        currWindow.close()
-    });
-
-    appMaxBtn.addEventListener('click', () => {
-        if (currWindow.isMaximized()) {
-            currWindow.restore()
-        } else {
-            currWindow.maximize()
+    function board_fullscreen(){
+        appPageHolder.requestFullscreen();
+        appPageHolder.onfullscreenchange = () => {
+            if (document.fullscreenElement === null){
+                appPageHolder.querySelector('.board-fullscreen').style.display = ''
+            }
         }
-    });
+    }
+
+    function create_new(type){
+        let new_win = new remote.BrowserWindow({
+            width: 800,
+            height: 600,
+            minWidth: 500,
+            minHeight: 100,
+            frame: false,
+            icon: __dirname + '\\app\\icons\\haruhi.ico',
+            webPreferences: {
+                nodeIntegration: true
+            }
+        });
+        new_win.loadFile('app/pages/new_' + type + '.html');
+        new_win.webContents.openDevTools()
+    }
+
+
     window.onresize = () => {
         if (window.outerWidth > 600) {
             open_bar();
@@ -523,8 +570,6 @@
             close_bar();
         }
     };
-
-    appMinBtn.addEventListener('click', () => currWindow.minimize());
     appMenuBtn.addEventListener('click', () => open_bar());
     appMenu.addEventListener('mouseleave', () => close_bar());
     appMenuItems.forEach(item => {
@@ -539,6 +584,6 @@
     } else {
         window.resizeTo(350, window.outerHeight)
     }
-    change_page('Characters')
+    change_page('Spells')
 </script>
 </html>

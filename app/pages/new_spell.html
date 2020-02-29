@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="../style/main.css">
+<link rel="stylesheet" href="../style/new-spell.css">
+<body>
+<div class="drag-bar">
+    Ryu Master
+    <div id="close" class="caption-btn" onclick="currWindow.close()">&#9587;</div>
+    <div id="max" class="caption-btn" onclick="{
+        if (currWindow.isMaximized()) {
+        currWindow.restore()
+        } else {
+            currWindow.maximize()
+        }}">&#9744;</div>
+    <div id="min" class="caption-btn" onclick="currWindow.minimize()">&#8210;</div>
+</div>
+<div class="client-area">
+    <div class="new-spell">
+        New Spell
+    </div>
+    <div class="spell-name">
+
+    </div>
+    <div class="spell-table">
+        <div class="level"></div>
+        <div class="casting-time"></div>
+        <div class="range-area"></div>
+        <div class="components"></div>
+        <div class="duration"></div>
+        <div class="school"></div>
+        <div class="to-hit-save"></div>
+        <div class="damage-effect"></div>
+    </div>
+    <div class="spell-desc"></div>
+</div>
+</body>
+<script>
+    const {remote} = require("electron"), currWindow = remote.getCurrentWindow()
+</script>
+</html>

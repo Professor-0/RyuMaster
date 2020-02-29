@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Luminari;
+  src: url("../fonts/Luminari-Regular.ttf");
+}
+@font-face {
+  font-family: Dearest;
+  src: url("../fonts/Dearest.ttf");
+}
+.new-spell {
+  width: 80%;
+  margin: 5px auto;
+  background: #03A9F4;
+  font-family: Luminari, Helvetica, sans-serif;
+  height: fit-content;
+  font-size: 40pt;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/*# sourceMappingURL=new-spell.css.map */

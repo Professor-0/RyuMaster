@@ -1,0 +1,33 @@
+$dark-primary: #E64A19;
+$light-primary: #FFCCBC;
+$primary: #FF5722;
+$text-icons: #FFFFFF;
+$accent: #03A9F4;
+$primary-text: #212121;
+$secondary-text: #757575;
+$divider: #BDBDBD;
+
+$side-bar-min: 40px;
+$side-bar-max: 200px;
+
+@font-face {
+  font-family: Luminari;
+  src: url("../fonts/Luminari-Regular.ttf");
+}
+
+@font-face {
+  font-family: Dearest;
+  src: url("../fonts/Dearest.ttf");
+}
+
+
+.new-spell {
+  width: 80%;
+  margin: 5px auto;
+  background: $accent;
+  font-family: Luminari, Helvetica, sans-serif;
+  height: fit-content;
+  font-size: 40pt;
+  color: $text-icons;
+  text-align: center;
+}
