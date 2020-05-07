@@ -1,4 +1,4 @@
-{
+ {
   "dragonborn": {
     "traits": [
       "<b><i>Breath Weapon</i></b>: As an action, breath a {0} of {1}. This {0} is {2}. Any creature in area has to make a {3} save. They take {4} damage on a failed save and half as much on a success.",

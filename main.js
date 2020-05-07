@@ -6,7 +6,7 @@ function createWindow() {
         width: 1000,
         height: 600,
         minWidth: 500,
-        minHeight: 100,
+        minHeight: 500,
         frame: false,
         icon: __dirname + '\\app\\icons\\haruhi.ico',
         webPreferences: {

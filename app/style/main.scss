@@ -33,10 +33,10 @@ $side-bar-max: 200px;
   color: $text-icons;
   height: 40px;
   line-height: 40px;
+  overflow: hidden;
   padding-left: 20px;
   text-align: left;
   width: 100%;
-  overflow: hidden;
 }
 
 .menu-item:hover {
@@ -46,14 +46,14 @@ $side-bar-max: 200px;
 
 .side-bar {
   background-color: $primary;
+  box-sizing: border-box;
   height: 100%;
-  user-select: none;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
-  z-index: 10;
-  box-sizing: border-box;
+  user-select: none;
   width: $side-bar-min;
+  z-index: 10;
 }
 
 .side-bar .open-close {
@@ -140,24 +140,24 @@ $side-bar-max: 200px;
 }
 
 .save-att-prof {
-  position: relative;
   border: solid 1px $accent;
   border-radius: 50%;
   height: 10px;
+  justify-content: center;
   line-height: 10px;
   margin: 0 6px 0 6px;
-  justify-content: center;
+  position: relative;
   width: 10px;
 }
 
 .prof-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -4px 0 0 -4px;
   background-color: $accent;
   border-radius: 50%;
   height: 8px;
+  left: 50%;
+  margin: -4px 0 0 -4px;
+  position: absolute;
+  top: 50%;
   width: 8px;
 }
 
@@ -189,13 +189,13 @@ $side-bar-max: 200px;
 }
 
 .skill-prof {
-  position: relative;
   border: solid 1px $accent;
   border-radius: 50%;
   height: 10px;
+  justify-content: center;
   line-height: 10px;
   margin: 0 6px 0 6px;
-  justify-content: center;
+  position: relative;
   width: 10px;
 }
 
@@ -204,8 +204,8 @@ $side-bar-max: 200px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   height: fit-content;
+  justify-content: center;
   position: relative;
   width: 100%;
 }
@@ -218,13 +218,13 @@ $side-bar-max: 200px;
   color: $text-icons;
   font-size: 20pt;
   height: 60px;
-  z-index: 2;
   line-height: 60px;
   position: fixed;
   right: 20px;
   text-align: center;
   transition: transform 500ms ease-in-out;
   width: 60px;
+  z-index: 2;
 }
 
 .new-item:hover {
@@ -232,7 +232,7 @@ $side-bar-max: 200px;
   transform: rotate(360deg);
 }
 
-.character, .campaign-box{
+.character, .campaign-box {
   background-color: $primary;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: $text-icons;
@@ -264,7 +264,7 @@ $side-bar-max: 200px;
   width: fit-content;
 }
 
-.character .name .text:hover, .campaign-box .name .text:hover{
+.character .name .text:hover, .campaign-box .name .text:hover {
   cursor: pointer;
 }
 
@@ -307,15 +307,15 @@ $side-bar-max: 200px;
   white-space: nowrap;
 }
 
-.control-board{
+.control-board {
+  background-color: #FFFFFF;
   bottom: 0;
   display: flex;
-  background-color: #FFFFFF;
   flex-direction: row;
   height: 60px;
+  overflow: hidden;
   position: absolute;
   width: 100%;
-  overflow: hidden;
 }
 
 .control-board .ctrl-btn {
@@ -518,16 +518,23 @@ body {
 }
 
 .page-holder {
+  background-color: #FFFFFF;
+  border-left: 40px solid transparent;
   box-sizing: border-box;
   height: 100%;
-  background-color: #FFFFFF;
-  overflow: auto;
-  border-left: 40px solid transparent;
   justify-content: center;
+  overflow: auto;
   padding-top: 10px;
   position: relative;
   right: 0;
   width: 100%;
+}
+
+.focus-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 div.side-bar::-webkit-scrollbar {
@@ -539,8 +546,8 @@ div.side-bar::-webkit-scrollbar {
   color: $text-icons;
   font-family: Luminari, Helvetica, sans-serif;
   font-size: 45pt;
+  margin: 0 auto 3px;
   position: relative;
-  margin: 0 auto;
   text-align: center;
   width: 90%;
 }
@@ -598,42 +605,44 @@ div.side-bar::-webkit-scrollbar {
 .spell-box .name {
   background-color: $dark-primary;
   color: $text-icons;
-  font-size: 20pt;
   font-family: Luminari, Helvetica, sans-serif;
+  font-size: 20pt;
   height: 100%;
   line-height: 60px;
   padding-left: 10px;
 }
 
 .letter-line {
-  width: 100%;
   box-sizing: border-box;
-  padding-left: 10%;
+  color: $primary;
   font-family: Dearest, Luminari, sans-serif;
   font-size: 35pt;
-  color: $primary;
   margin-bottom: -20px;
+  padding-left: 10%;
   padding-top: 40px;
+  width: 100%;
 }
 
 .alphabet-navi {
-  width: 80%;
-  font-family: Luminari, sans-serif;
+  background-color: $text-icons;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: $dark-primary;
   display: flex;
   flex-direction: row;
-  position: sticky;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  top: 0;
-  padding: 0 10px;
-  border-radius: 25px;
-  background-color: $text-icons;
-  color: $dark-primary;
-  z-index: 2;
+  flex-wrap: wrap;
+  font-family: Luminari, sans-serif;
   font-size: 20pt;
+  padding: 0 10px;
+  position: sticky;
+  top: 0;
+  width: 80%;
+  z-index: 2;
 }
 
 .alphabet-navi .letter {
   margin: 0 auto;
+  padding: 0 3px;
 }
 
 .alphabet-navi .letter:hover {
@@ -641,49 +650,51 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .confirm {
-  z-index: 10;
-  position: absolute;
-  height: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 350px;
-  font-size: 17pt;
-  top: 50vh;
-  left: 50vw;
-  margin-top: -100px;
-  margin-left: -175px;
   background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 17pt;
+  height: 200px;
+  left: 50vw;
+  margin-left: -175px;
+  margin-top: -100px;
+  position: absolute;
+  top: 50vh;
+  width: 350px;
+  z-index: 10;
 }
 
 .confirm .top {
-  color: $text-icons;
   background-color: $dark-primary;
-  width: 100%;
-  padding-left: 10px;
+  box-sizing: border-box;
+  color: $text-icons;
   height: 50px;
   line-height: 50px;
+  padding-left: 10px;
+  width: 100%;
 }
 
 .confirm .body {
-  color: $text-icons;
   background-color: $primary;
-  width: 100%;
-  padding: 10px;
+  box-sizing: border-box;
+  color: $text-icons;
   height: 100px;
+  padding: 10px;
+  width: 100%;
 }
 
 .confirm .bottom {
+  background-color: $text-icons;
+  color: $primary-text;
+  display: flex;
+  flex-direction: row;
   height: 50px;
   line-height: 50px;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  background-color: $text-icons;
-  color: $primary-text;
 }
 
 .confirm .bottom .button {
-  width: 50%;
   text-align: center;
+  width: 50%;
 }
 
 .confirm .bottom .button:hover {
@@ -692,14 +703,14 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .board-fullscreen {
-  position: fixed;
-  top: 35px;
-  right: 10px;
-  width: 30px;
   opacity: 0.2;
+  position: fixed;
+  right: 10px;
+  top: 35px;
+  width: 30px;
 }
 
-.board-fullscreen img{
+.board-fullscreen img {
   max-height: 100%;
   max-width: 100%;
 }
@@ -710,13 +721,13 @@ div.side-bar::-webkit-scrollbar {
 
 .campaign-box .desc {
   color: $text-icons;
+  display: table;
   font-size: 16pt;
   height: 130px;
   overflow: hidden;
   padding: 0 10px 0 10px;
   text-align: center;
   text-overflow: ellipsis;
-  display: table;
 }
 
 .campaign-box .desc .text {
@@ -725,24 +736,24 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .campaign-board {
-  position: relative;
   display: grid;
   height: 100%;
+  position: relative;
 }
 
 .campaign-title {
-  width: fit-content;
-  box-sizing: border-box;
-  height: 95%;
   background-color: $accent;
+  border-radius: 10px;
+  box-sizing: border-box;
   color: $text-icons;
-  text-orientation: upright;
-  text-align: center;
-  writing-mode: vertical-lr;
   font-family: Dearest, Helvetica, sans-serif;
   font-size: 7vh;
+  height: 95%;
   margin: 10px;
-  border-radius: 10px;
-  word-wrap: break-word;
   overflow: hidden;
+  text-align: center;
+  text-orientation: upright;
+  width: fit-content;
+  word-wrap: break-word;
+  writing-mode: vertical-lr;
 }

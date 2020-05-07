@@ -11,7 +11,8 @@
   "author": "Prof",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.1.2"
+    "electron": "^7.1.2",
+    "minimist": "^0.2.1"
   },
   "dependencies": {}
 }

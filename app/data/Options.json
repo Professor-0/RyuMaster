@@ -1,0 +1,5 @@
+{
+  "schools": ["Abjuration", "Conjuration", "Divination", "Enchantment",
+    "Evocation", "Illusion", "Necromancy", "Transmutation"],
+  "spellLevelMax": 9
+}

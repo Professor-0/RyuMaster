@@ -140,8 +140,9 @@
 
     function confirm_delete(type, index) {
         let data = JSON.parse(fs.readFileSync("app/data/" + type + "s.json").toString());
+        let screen = document.createElement('DIV');
+        screen.className = 'focus-screen';
         let confirm = document.createElement('DIV');
-        console.log(index);
         confirm.id = 'confirm';
         confirm.className = 'confirm';
         confirm.innerHTML = `
@@ -149,9 +150,10 @@
                               <div class="body">Are you sure you want to delete ${data[index].name}?</div>
                               <div class="bottom">
                                   <div class="button" onclick="delete_data('${type}', ${index})">Yes</div>
-                                  <div class="button" onclick="appClientArea.removeChild(appClientArea.lastChild)">Cancel</div>
+                                  <div class="button" onclick="{appClientArea.removeChild(appClientArea.lastChild);appClientArea.removeChild(appClientArea.lastChild) }">Cancel</div>
                               </div>
                             `;
+        appClientArea.appendChild(screen);
         appClientArea.appendChild(confirm);
     }
 
@@ -161,6 +163,7 @@
         fs.writeFile("app/data/" + type + "s.json", JSON.stringify(data), err => {
             if (err) throw err;
             console.log('Deleted Data');
+            appClientArea.removeChild(appClientArea.lastChild);
             appClientArea.removeChild(appClientArea.lastChild);
             change_page(type + 's')
 
@@ -549,7 +552,7 @@
             width: 800,
             height: 600,
             minWidth: 500,
-            minHeight: 100,
+            minHeight: 500,
             frame: false,
             icon: __dirname + '\\app\\icons\\haruhi.ico',
             webPreferences: {
@@ -584,6 +587,6 @@
     } else {
         window.resizeTo(350, window.outerHeight)
     }
-    change_page('Spells')
+    change_page('Characters')
 </script>
 </html>
