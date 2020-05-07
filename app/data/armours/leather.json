@@ -1,6 +1,6 @@
 {
-  "AC": "11",
+  "AC": 11,
   "bonus": "dex",
-  "bonus-cap": "99",
+  "bonus-cap": 0,
   "stealth": "normal"
 }
