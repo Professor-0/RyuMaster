@@ -503,7 +503,7 @@ function board_fullscreen(){
 
 function create_new(type){
     let new_win = new remote.BrowserWindow({
-        width: 800,
+        width: 500,
         height: 600,
         minWidth: 500,
         minHeight: 500,

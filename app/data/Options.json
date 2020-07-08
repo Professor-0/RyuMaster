@@ -1,5 +1,13 @@
 {
   "schools": ["Abjuration", "Conjuration", "Divination", "Enchantment",
     "Evocation", "Illusion", "Necromancy", "Transmutation"],
-  "spellLevelMax": 9
+  "spellLevelMax": 9,
+  "castActions": ["Action", "Bonus Action", "Reaction", "None"],
+  "saves": ["To Hit", "STR", "DEX", "CON", "INT", "WIS", "CHA"],
+  "effects": [
+    "Banishment", "Buff", "Charmed", "Combat", "Communication", "Compulsion", "Control", "Creation", "Damage", "Debuff",
+    "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement",
+    "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Summoning", "Teleportation", "Utility", "Warding"],
+  "damages": ["Acid", "Bludgeoning", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Piercing", "Poison", "Psychic",
+    "Radiant", "Slashing", "Thunder"]
 }

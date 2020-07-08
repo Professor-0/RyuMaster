@@ -210,7 +210,7 @@ $side-bar-max: 200px;
   width: 100%;
 }
 
-.new-item {
+.new-item, .save{
   background-color: $accent;
   border-radius: 50%;
   bottom: 10px;
@@ -596,6 +596,12 @@ div.side-bar::-webkit-scrollbar {
   margin: 30px;
   position: relative;
   width: 80%;
+}
+
+.spell-box .name .text{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .spell-box:hover {

@@ -97,19 +97,12 @@ label{
   color: $text-icons;
 }
 
-.spell-table {
-  display: flex;
-  flex-direction: column;
-}
-.spell-table .spell-table-cell {
-
-}
-
 .row {
   margin: 10px auto;
   width: 90%;
 }
-.row .cell {
+
+.row .cell, .row .cell-text{
   display: flex;
   flex-direction: column;
   height: 100px;
@@ -123,10 +116,11 @@ label{
   box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
 }
 
-.row .cell .input {
+.row .cell .input, .row .cell-text .input {
   width: 100%;
   height: 65px;
   line-height: 65px;
+  background: inherit;
   text-align: center;
   font-size: 20pt;
 }
@@ -135,40 +129,66 @@ label{
   cursor: pointer;
 }
 
-.row #spell-name {
+.row .cell-text {
   width: 100%;
   height: fit-content;
 }
 
-.row #spell-name .input {
-  font-family: Luminari, Helvetica, sans-serif;
+.row .cell-text .input{
   width: 90%;
   box-sizing: border-box;
   padding: 0 3px;
   margin: 0 auto 5px;
   height: fit-content;
-  font-size: 30pt;
+  font-size: 20pt;
   color: $text-icons;
 }
 
-.row #spell-name .input:hover {
+.row #spell-name .input {
+  font-family: Luminari, Helvetica, sans-serif;
+  font-size: 30pt;
+}
+
+.row #spell-dmg .input{
+  height: 100px;
+  position: relative;
+}
+
+.row #spell-cast-desc .input {
+  width: 90%;
+}
+
+.row #to-hit-save .input:hover, .row #effect .input:hover {
+  cursor: pointer;
+}
+
+
+.row #spell-cast-time .input:hover, .row .cell-text .input:hover{
   cursor: text;
 }
 
-.row #spell-name .input:focus {
+.row .cell-text .input:focus, .row #spell-cast-time .input:focus{
   outline: none;
 }
 
 
-.row #spell-level {
+.row #spell-level{
   width: 110px;
+}
+
+.row #spell-cast-time {
+  width: 150px;
+}
+
+.row #spell-cast-action {
+  width: 200px;
 }
 
 .row #spell-school {
   width: 240px;
 }
 
-.row .cell .title {
+.row .cell .title, .row .cell-text .title{
   box-sizing: border-box;
   padding: 5px;
   background: $dark-primary;
@@ -179,15 +199,11 @@ label{
   font-size: 17pt;
 }
 
-.row .cell .input {
-  background: inherit;
-}
-
 .spell-level {
   margin: 0 20px 0 30px
 }
 
-.select-box {
+.select-box, .wheel-container {
   width: 250px;
   height: 400px;
   top: 50%;
@@ -203,11 +219,16 @@ label{
   z-index: 5;
   overflow: scroll;
 }
-div.select-box::-webkit-scrollbar {
+
+div.select-box::-webkit-scrollbar{
   width: 0;
+  height: 0;
 }
 
 .select-box .title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   box-sizing: border-box;
   padding: 5px;
   background: $dark-primary;
@@ -218,17 +239,103 @@ div.select-box::-webkit-scrollbar {
   text-align: center;
   font-size: 17pt;
 }
-.select-box .option {
+.select-box .select-done {
+  position: sticky;
+  bottom: 0;
   text-align: center;
   box-sizing: border-box;
+  background: $primary;
   height: 35px;
   width: 100%;
-  margin: auto;
-  padding: 5px 0;
+  margin-top: 20px;
+  padding: 5px;
   font-size: 15pt;
 }
 
-.select-box .option:hover{
+.select-box .option {
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  margin: auto;
+  padding: 10px 0;
+  font-size: 15pt;
+}
+
+.select-box .option .check-holder {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px 20px;
+  height: 40px;
+  line-height: 20px;
+}
+
+.select-box .option:hover, .select-box .select-done:hover{
   cursor: pointer;
   background: $dark-primary;
+}
+
+.save:hover{
+    box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
+}
+
+.row #Components .input {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.component {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  line-height: 50px;
+  text-align: center;
+  margin: 2px;
+  border: $light-primary 1px solid;
+  color: $light-primary
+}
+
+.add-damage {
+  border-radius: 50%;
+  height: 50px;
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.2);
+  line-height: 50px;
+  margin: 20px auto;
+  width: 50px;
+  transition: transform 500ms ease-in-out;
+  background: $accent;
+}
+
+.add-damage:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+  box-shadow: 0 0 5px 4px rgba(87, 28, 9, 0.3);
+}
+
+.damage {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+}
+
+.dice {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+}
+
+.wheel-container {
+  width: 400px;
+}
+
+.wheel {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  position: relative;
 }
