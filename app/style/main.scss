@@ -1,11 +1,13 @@
 $dark-primary: #E64A19;
-$light-primary: #FFCCBC;
-$primary: #FF5722;
+$light-primary: #a714a2;
+$primary: #600c5c;
 $text-icons: #FFFFFF;
-$accent: #03A9F4;
+$accent: #2384a0;
 $primary-text: #212121;
 $secondary-text: #757575;
 $divider: #BDBDBD;
+
+$box-colour: #b2b2b2;
 
 $side-bar-min: 40px;
 $side-bar-max: 200px;
@@ -40,7 +42,8 @@ $side-bar-max: 200px;
 }
 
 .menu-item:hover {
-  background-color: $dark-primary;
+  background-color: #fff;
+  color: black;
   cursor: pointer;
 }
 
@@ -233,7 +236,7 @@ $side-bar-max: 200px;
 }
 
 .character, .campaign-box {
-  background-color: $primary;
+  background-color: $box-colour;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: $text-icons;
   height: 260px;
@@ -242,11 +245,57 @@ $side-bar-max: 200px;
   width: 300px;
 }
 
+.character {
+  width: 700px;
+  height: 300px;
+  display: flex;
+}
+
+.character .left {
+  width: 80%;
+  height: 240px;
+}
+
+.character .right {
+  width: 20%;
+  height: 240px;
+}
+
+
 .character:hover {
   box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
 }
 
-.character .name, .campaign-box .name {
+.character .top-bar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  background-color: $box-colour;
+}
+
+.character .name {
+  font-family: Luminari, Helvetica, sans-serif;
+  font-size: 20pt;
+  line-height: 70px;
+  overflow: hidden;
+  margin-right: auto;
+  padding-left: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.character .race {
+  padding: 5px;
+  margin: auto 0;
+}
+
+.character .class {
+  padding: 5px;
+  margin: auto 0;
+}
+
+.campaign-box .name {
   background-color: $dark-primary;
   box-sizing: border-box;
   font-family: Luminari, Helvetica, sans-serif;
@@ -281,30 +330,6 @@ $side-bar-max: 200px;
   text-align: center;
   top: 5px;
   width: 60px;
-}
-
-.character .class {
-  color: $text-icons;
-  font-size: 16pt;
-  height: 60px;
-  line-height: 60px;
-  overflow: hidden;
-  padding: 0 10px 0 10px;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.character .race {
-  color: $text-icons;
-  font-size: 16pt;
-  height: 60px;
-  line-height: 60px;
-  overflow: hidden;
-  padding: 0 10px 0 10px;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .control-board {
@@ -435,17 +460,19 @@ body {
 }
 
 .caption-btn {
+  color: $text-icons;
   -webkit-app-region: no-drag;
   box-sizing: border-box;
   float: right;
   font-size: 15px;
-  height: 29px;
+  height: 30px;
   padding: 3px 15px 0 15px;
   width: 43px;
 }
 
 .caption-btn:hover {
-  background-color: $primary;
+  background-color: #f2f2f2;
+  color: black;
   cursor: pointer;
 }
 
@@ -469,7 +496,7 @@ body {
 
 .drag-bar {
   -webkit-app-region: drag;
-  background-color: $dark-primary;
+  background-color: $primary;
   font-size: 22px;
   height: 30px;
   left: 0;
@@ -609,7 +636,7 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .spell-box .name {
-  background-color: $dark-primary;
+  background-color: $box-colour;
   color: $text-icons;
   font-family: Luminari, Helvetica, sans-serif;
   font-size: 20pt;
@@ -620,11 +647,11 @@ div.side-bar::-webkit-scrollbar {
 
 .letter-line {
   box-sizing: border-box;
-  color: $primary;
+  color: $accent;
   font-family: Dearest, Luminari, sans-serif;
-  font-size: 35pt;
+  font-size: 50pt;
   margin-bottom: -20px;
-  padding-left: 10%;
+  padding-left: 7%;
   padding-top: 40px;
   width: 100%;
 }
@@ -639,7 +666,8 @@ div.side-bar::-webkit-scrollbar {
   flex-wrap: wrap;
   font-family: Luminari, sans-serif;
   font-size: 20pt;
-  padding: 0 10px;
+  margin-top: 10px;
+  padding: 10px 10px;
   position: sticky;
   top: 0;
   width: 80%;
@@ -762,4 +790,10 @@ div.side-bar::-webkit-scrollbar {
   width: fit-content;
   word-wrap: break-word;
   writing-mode: vertical-lr;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }

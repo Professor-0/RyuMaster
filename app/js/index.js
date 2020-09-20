@@ -12,7 +12,7 @@ const appCloseBtn = document.querySelector('#close'),
     appClientArea = document.querySelector('.client-area');
 appSideBar.style.width = '40px';
 
-
+let appInnerPage;
 let current_page = '', windows = [];
 
 function open_bar() {
@@ -124,10 +124,52 @@ function delete_data(type, index) {
     })
 }
 
+function load_spells() {
+    const spells = JSON.parse(fs.readFileSync("app/data/Spells.json").toString());
+
+    let i = 3, changed = false, current_letter = ' ';
+    for (const spell in spells) {
+        if (spells.hasOwnProperty(spell)) {
+            i++;
+            if (appInnerPage.querySelector('#' + spell) === null) {
+                if (!spell.startsWith(current_letter)) {
+                    current_letter = spell[0];
+
+                    if (appInnerPage.querySelector('#' + current_letter + '-line') === null) {
+                        let bar = document.createElement('DIV');
+                        bar.className = 'letter-line';
+                        bar.id = `${current_letter}-line`;
+                        bar.innerHTML = current_letter.toUpperCase();
+                        appInnerPage.insertBefore(bar, appInnerPage.children[i])
+                    }
+
+                    i++;
+                }
+                changed = true;
+                let elem = document.createElement('DIV');
+                elem.className = 'spell-box';
+                elem.id = spell;
+                elem.innerHTML = `<div class="name">
+                                            <div class="text">${spells[spell].name}</div>
+                                          </div>`;
+                appInnerPage.insertBefore(elem, appInnerPage.children[i])
+
+            }
+        }
+
+    }
+    if (changed){
+        fs.writeFile("app/pages/Spells.html", appPageHolder.innerHTML, err => {
+            if (err) throw err;
+            console.log('Overwrote Spells')
+        })
+    }
+}
+
 function change_page(page) {
     appPageHolder.innerHTML = fs.readFileSync("app/pages/" + page + ".html").toString();
     current_page = page;
-    const appInnerPage = document.querySelector('#' + page);
+    appInnerPage = document.querySelector('#' + page);
     if (page === 'Characters') {
         const char = JSON.parse(fs.readFileSync("app/data/Characters.json").toString());
         let i, c;
@@ -146,18 +188,41 @@ function change_page(page) {
             }
             appInnerPage.innerHTML +=
                 `<div class="character" id="${i}">
-                           <div class="name">
-                               <div class="text">${c.name}</div>
-                           </div>
-                           <div class="level">${c.level}</div>
-                           <div class="race">${race}</div>
-                           <div class="class">${class_str}</div>
-                           <div class="control-board">
-                               <div class="ctrl-btn" onclick="open_character(${i})">View</div>
-                               <div class="ctrl-btn">Edit</div>
-                               <div class="ctrl-btn" onclick="confirm_delete('Character', ${i})">Delete</div>
-                           </div>
-                     </div>`;
+                    <div class="left">
+                        <div class="top-bar">
+                            <div class="name">
+                               ${c.name}
+                            </div>
+                            <div class="col">
+                                <div class="race">${race}</div>
+                                <div class="class">${class_str}</div>
+                            </div>
+                        </div>
+                        <div class="bottom-bar">
+                            <div class="ac-lvl-hp">
+                               <div class="ac">${calculate_ac(score_to_mod(c.dex), c.armour, c.ac.bonus)}</div>
+                               <div class="lvl">${c.level}</div>
+                               <div class="hp">${c.hp}</div>
+                            </div>
+                            <div class="stats">
+                               <div class="score-box"></div>
+                               <div class="score-box"></div>
+                               <div class="score-box"></div>
+                               <div class="score-box"></div>
+                               <div class="score-box"></div>
+                               <div class="score-box"></div>
+                            
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="right"></div>
+                  <div class="control-board">
+                       <div class="ctrl-btn" onclick="open_character(${i})">View</div>
+                       <div class="ctrl-btn">Edit</div>
+                       <div class="ctrl-btn" onclick="confirm_delete('Character', ${i})">Delete</div>
+                   </div>
+             </div>`;
         }
     } else if (page === 'Races') {
         const races = JSON.parse(fs.readFileSync("app/data/Races.json").toString());
@@ -173,51 +238,6 @@ function change_page(page) {
                     `
         }
     } else if (page === 'Spells') {
-        const spells = JSON.parse(fs.readFileSync("app/data/Spells.json").toString());
-
-
-        let current_letter = ' ';
-
-        function load_spells() {
-            let i = 3, changed = false;
-            for (const spell in spells) {
-                if (spells.hasOwnProperty(spell)) {
-                    i++;
-                    if (appInnerPage.querySelector('#' + spell) === null) {
-                        if (!spell.startsWith(current_letter)) {
-                            current_letter = spell[0];
-
-                            if (appInnerPage.querySelector('#' + current_letter + '-line') === null) {
-                                let bar = document.createElement('DIV');
-                                bar.className = 'letter-line';
-                                bar.id = `${current_letter}-line`;
-                                bar.innerHTML = current_letter.toUpperCase();
-                                appInnerPage.insertBefore(bar, appInnerPage.children[i])
-                            }
-
-                            i++;
-                        }
-                        changed = true;
-                        let elem = document.createElement('DIV');
-                        elem.className = 'spell-box';
-                        elem.id = spell;
-                        elem.innerHTML = `<div class="name">
-                                            <div class="text">${spells[spell].name}</div>
-                                          </div>`;
-                        appInnerPage.insertBefore(elem, appInnerPage.children[i])
-
-                    }
-                }
-
-            }
-            if (changed){
-                fs.writeFile("app/pages/Spells.html", appPageHolder.innerHTML, err => {
-                    if (err) throw err;
-                    console.log('Overwrote Spells')
-                })
-            }
-        }
-
         setTimeout(load_spells, 10);
     } else if (page === 'Campaigns'){
         const campaigns = JSON.parse(fs.readFileSync("app/data/Campaigns.json").toString());
@@ -241,7 +261,36 @@ function change_page(page) {
 
 }
 
-function score_to_mod(score) {
+function calculate_ac(dex, armour, bonus){
+    switch (armour){
+        case "padded":
+            return bonus + 11 + dex
+        case "leather":
+            return bonus + 11 + dex
+        case "studded":
+            return bonus + 12 + dex
+        case "hide":
+            return dex > 2 ? bonus + 14 : bonus + 12 + dex
+        case "chain-shirt":
+            return dex > 2 ? bonus + 15 : bonus + 13 + dex
+        case "scale":
+            return dex > 2 ? bonus + 16 : bonus + 14 + dex
+        case "breastplate":
+            return dex > 2 ? bonus + 16 : bonus + 14 + dex
+        case "half-plate":
+            return dex > 2 ? bonus + 17 : bonus + 15 + dex
+        case "ring-mail":
+            return 14
+        case "chain-mail":
+            return 16
+        case "splint":
+            return 17
+        case "plate":
+            return 18
+    }
+}
+
+function score_to_mod(score){
     return Math.floor((score - 10) / 2)
 }
 
@@ -494,6 +543,7 @@ function scroll_to_letter(letter) {
 
 function board_fullscreen(){
     appPageHolder.requestFullscreen();
+
     appPageHolder.onfullscreenchange = () => {
         if (document.fullscreenElement === null){
             appPageHolder.querySelector('.board-fullscreen').style.display = ''
