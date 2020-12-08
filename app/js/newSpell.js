@@ -64,7 +64,7 @@ function selectCastAction(selected) {
 }
 
 function toggleComponent(C, elem) {
-    components[C] ^= 1;
+    components[C] = !components[C];
     if (components[C]){
         elem.style = "border: #fff solid 1px; color: #fff;"
     } else {
@@ -143,21 +143,18 @@ function addDamage(elem) {
     const newDamage = document.createElement('DIV')
     newDamage.className= 'damage'
     newDamage.id=`D${damages.length}`
-    newDamage.innerHTML = '<div class="dice"><div class="n-dice">1</div><div class="dice-num">d10</div></div><div class="damage-type">psychic damage</div>'
+    newDamage.innerHTML = '<div class="dice">' +
+        '<div class="n-dice" contenteditable="true">1</div>d<div class="dice-num" contenteditable="true">10</div>' +
+        `</div><div class="damage-type" onclick="chooseData('damages', 'Damage', selectDamage(this))">psychic damage</div>` +
+        '<div class="delete-damage">&#8210;</div>'
     damagesInput.appendChild(newDamage)
     damages.push(newDamage)
-    selectDice(this)
 }
 
-function selectDice(dest){
-    const wheelContainer = document.createElement('DIV')
-    wheelContainer.className = 'wheel-container'
-    const diceNumWheel = document.createElement('DIV')
-    diceNumWheel.className = 'wheel'
-    diceNumWheel.innerHTML = '<div class="wheel-pointer">-</div>'
-    wheelContainer.appendChild(diceNumWheel)
-    for (let i = 1; i < 20; i++){
-        diceNumWheel.innerHTML += `<div class='wheel-item'>${i}</div>`
-    }
-    appClientArea.appendChild(wheelContainer)
+function selectDamage(elem){
+    return ((selected) => {
+        elem.innerHTML = selected.id;
+        appClientArea.removeChild(appClientArea.lastChild);
+        appClientArea.removeChild(appClientArea.lastChild);
+    });
 }

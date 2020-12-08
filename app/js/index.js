@@ -204,19 +204,46 @@ function change_page(page) {
                                <div class="lvl">${c.level}</div>
                                <div class="hp">${c.hp}</div>
                             </div>
-                            <div class="stats">
-                               <div class="score-box"></div>
-                               <div class="score-box"></div>
-                               <div class="score-box"></div>
-                               <div class="score-box"></div>
-                               <div class="score-box"></div>
-                               <div class="score-box"></div>
-                            
+                            <div class="scores-top">
+                                <div id="str-score" class="score-box">
+                                    <div class="score-name">STRENGTH</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.str))}</div>
+                                    <div class="score">${c.str}</div>
+                                </div>
+                                <div id="dex-score" class="score-box">
+                                    <div class="score-name">DEXTERITY</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.dex))}</div>
+                                    <div class="score">${c.dex}</div>
+                                </div>
+                                <div id="con-score" class="score-box">
+                                    <div class="score-name">CONSTITUTION</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.con))}</div>
+                                    <div class="score">${c.con}</div>
+                                </div>
+                            </div>
+                            <div class="scores-bottom">
+                                <div id="int-score" class="score-box">
+                                    <div class="score-name">INTELLIGENCE</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.int))}</div>
+                                    <div class="score">${c.int}</div>
+                                </div>
+                                <div id="wis-score" class="score-box">
+                                    <div class="score-name">WISDOM</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.wis))}</div>
+                                    <div class="score">${c.wis}</div>
+                                </div>
+                                <div id="cha-score" class="score-box">
+                                    <div class="score-name">CHARISMA</div>
+                                    <div class="mod">${mod_to_str(score_to_mod(c.cha))}</div>
+                                    <div class="score">${c.cha}</div>
+                                </div>
                             </div>
                         </div>
                     
                     </div>
-                    <div class="right"></div>
+                    <div class="right">
+                        <div class="char-portrait"><img src="${c.portrait}" alt="portrait"/></div>
+                    </div>
                   <div class="control-board">
                        <div class="ctrl-btn" onclick="open_character(${i})">View</div>
                        <div class="ctrl-btn">Edit</div>

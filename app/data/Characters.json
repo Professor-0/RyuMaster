@@ -1,9 +1,10 @@
 [
   {
-    "name": "Hakne",
+    "name": "Haruhi",
     "xp": "Milestones",
     "alignment": "Neutral Good",
     "background": "urchin",
+    "hp": 53,
     "armour": "leather",
     "ac": {
       "base": 11,
@@ -153,7 +154,8 @@
       "dagger",
       "shortsword"
     ],
-    "race": "elf",
-    "subrace": "drow"
+    "race": "human",
+    "subrace": "awesome",
+    "portrait": "app/imgs/haruhi.png"
   }
 ]

@@ -1,11 +1,14 @@
 $dark-primary: #E64A19;
-$light-primary: #FFCCBC;
-$primary: #FF5722;
+$light-primary: #a714a2;
+$primary: #600c5c;
 $text-icons: #FFFFFF;
-$accent: #03A9F4;
+$accent: #2384a0;
 $primary-text: #212121;
 $secondary-text: #757575;
 $divider: #BDBDBD;
+
+$box-colour: #b2b2b2;
+
 
 $side-bar-min: 40px;
 $side-bar-max: 200px;
@@ -73,7 +76,6 @@ label{
   font-family: Luminari, Helvetica, sans-serif;
   font-size: 30pt;
   background: transparent;
-  overflow-wrap: break-spaces;
   text-align: center;
   border: none;
 }
@@ -329,6 +331,10 @@ div.select-box::-webkit-scrollbar{
   margin: 0 10px;
 }
 
+.n-dice {
+  
+}
+
 .wheel-container {
   width: 400px;
 }
@@ -338,4 +344,8 @@ div.select-box::-webkit-scrollbar{
   flex-direction: column;
   width: 40%;
   position: relative;
+}
+
+.wheel-item {
+  text-align: center;
 }
