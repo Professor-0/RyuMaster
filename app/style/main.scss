@@ -230,7 +230,7 @@ $side-bar-max: 200px;
   z-index: 2;
 }
 
-.new-item:hover {
+.new-item:hover, .save:hover{
   cursor: pointer;
   transform: rotate(360deg);
 }

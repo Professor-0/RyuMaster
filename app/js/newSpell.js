@@ -32,7 +32,8 @@ function change_level(elem) {
         elem.innerHTML = out
     }
 }
-function chooseData(dataName, title, callback) {
+
+function chooseData(dataName, title, holder) {
     const data = appOptions[dataName];
     let screen = document.createElement('DIV');
     screen.className = 'focus-screen';
@@ -40,25 +41,20 @@ function chooseData(dataName, title, callback) {
         appClientArea.removeChild(appClientArea.lastChild)};
     let select = document.createElement('DIV');
     select.className = 'select-box';
-    select.innerHTML = `<div class="title">Select ${title}</div>`
+    select.innerHTML = `<div class="title">Select ${title}</div>`;
     for (const datum in data){
         if (!data.hasOwnProperty(datum)) continue;
         select.innerHTML +=
             `
-                <div id="${data[datum] !== 'None' ? data[datum] : ''}" class="option" onclick="${callback}(this)">${data[datum]}</div>
+                <div id="${data[datum] !== 'None' ? data[datum] : ''}" class="option" onclick="fillHolder(${holder}, this)">${data[datum]}</div>
                 `
     }
     appClientArea.appendChild(screen);
     appClientArea.appendChild(select)
 }
-function selectSchool(selected) {
-    schoolInput.innerHTML = selected.id;
-    appClientArea.removeChild(appClientArea.lastChild)
-    appClientArea.removeChild(appClientArea.lastChild)
-}
 
-function selectCastAction(selected) {
-    castActionInput.innerHTML = selected.id;
+function fillHolder(holder, selected){
+    holder.innerHTML = selected.id;
     appClientArea.removeChild(appClientArea.lastChild)
     appClientArea.removeChild(appClientArea.lastChild)
 }
@@ -68,16 +64,11 @@ function toggleComponent(C, elem) {
     if (components[C]){
         elem.style = "border: #fff solid 1px; color: #fff;"
     } else {
-        elem.style = "border: #FFCCBC solid 1px; color: #FFCCBC;"
+        elem.style = "border: #2384a0 solid 1px; color: #2384a0;"
     }
 
 }
 
-function selectDurationAction(selected) {
-    durationActionInput.innerHTML = selected.id;
-    appClientArea.removeChild(appClientArea.lastChild)
-    appClientArea.removeChild(appClientArea.lastChild)
-}
 
 function chooseMData(dataName, title, callback, elem) {
     const data = appOptions[dataName];
@@ -137,24 +128,29 @@ function closeSelect(dName) {
 
 function addDamage(elem) {
     if (!damages.length){
-        addDamageButton.style="margin: 0; position: absolute; right: -18px; bottom: 2px"
-        damagesInput.style="height: fit-content; padding-bottom: 25px"
+        damagesInput.style="height: fit-content"
     }
     const newDamage = document.createElement('DIV')
     newDamage.className= 'damage'
-    newDamage.id=`D${damages.length}`
-    newDamage.innerHTML = '<div class="dice">' +
+    newDamage.innerHTML = `<div class="dice-id">${damages.length+1})</div>` +
+        '<div class="dice">' +
         '<div class="n-dice" contenteditable="true">1</div>d<div class="dice-num" contenteditable="true">10</div>' +
-        `</div><div class="damage-type" onclick="chooseData('damages', 'Damage', selectDamage(this))">psychic damage</div>` +
-        '<div class="delete-damage">&#8210;</div>'
+        `</div><div class="damage-type" onclick="chooseData('damages', 'Damage', 'damages[${damages.length}].children[2]')">psychic</div> damage` +
+        `<div class="delete-damage" onclick="deleteDamage(${damages.length})">&#8210;</div>`
     damagesInput.appendChild(newDamage)
+    damagesInput.appendChild(addDamageButton)
     damages.push(newDamage)
 }
 
-function selectDamage(elem){
-    return ((selected) => {
-        elem.innerHTML = selected.id;
-        appClientArea.removeChild(appClientArea.lastChild);
-        appClientArea.removeChild(appClientArea.lastChild);
-    });
+function deleteDamage(id){
+    damages[id].remove();
+    for (let i = id + 1; i < damages.length; ++i){
+        damages[i].children[0].innerHTML = i + ")";
+        damages[i].children[2].onclick = () =>
+            chooseData('damages', 'Damage', `damages[${i - 1}].children[2]`);
+        damages[i].children[3].onclick = () =>
+            deleteDamage(i - 1);
+    }
+    damages.splice(id, 1);
+
 }

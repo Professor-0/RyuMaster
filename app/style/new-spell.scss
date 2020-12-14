@@ -9,10 +9,6 @@ $divider: #BDBDBD;
 
 $box-colour: #b2b2b2;
 
-
-$side-bar-min: 40px;
-$side-bar-max: 200px;
-
 @font-face {
   font-family: Luminari;
   src: url("../fonts/Luminari-Regular.ttf");
@@ -49,6 +45,7 @@ $side-bar-max: 200px;
   height: 3px;
   border-radius: 2px;
 }
+
 .page-holder {
   border: 0;
   padding: 10px 20px;
@@ -79,24 +76,9 @@ label{
   text-align: center;
   border: none;
 }
-.spell-name-input:focus{
-  outline: none;
-}
 
 ::placeholder{
   color: $text-icons
-}
-
-.spell-name {
-  width: 90%;
-  box-sizing: border-box;
-  padding: 0 3px;
-  margin: 0 auto 5px;
-  background: $accent;
-  font-family: Luminari, Helvetica, sans-serif;
-  height: fit-content;
-  font-size: 40pt;
-  color: $text-icons;
 }
 
 .row {
@@ -114,8 +96,8 @@ label{
   color: $text-icons;
 }
 
-.row .cell:hover {
-  box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
+.row .cell:hover, .row .cell-text:hover {
+  box-shadow: 0 4px 8px 0 rgba(101, 44, 140, 0.7), 0 6px 20px 0 rgba(101, 44, 140, 0.19);
 }
 
 .row .cell .input, .row .cell-text .input {
@@ -169,10 +151,9 @@ label{
   cursor: text;
 }
 
-.row .cell-text .input:focus, .row #spell-cast-time .input:focus{
+div:focus{
   outline: none;
 }
-
 
 .row #spell-level{
   width: 110px;
@@ -193,7 +174,7 @@ label{
 .row .cell .title, .row .cell-text .title{
   box-sizing: border-box;
   padding: 5px;
-  background: $dark-primary;
+  background: $primary;
   width: 100%;
   height: 35px;
   line-height: 25px;
@@ -211,7 +192,7 @@ label{
   top: 50%;
   padding: 0;
   background: $primary;
-  box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
+  box-shadow: 0 4px 8px 0 rgba(101, 44, 140, 0.7), 0 6px 20px 0 rgba(101, 44, 140, 0.19);
   display: flex;
   flex-direction: column;
   left: 50%;
@@ -233,7 +214,7 @@ div.select-box::-webkit-scrollbar{
   z-index: 2;
   box-sizing: border-box;
   padding: 5px;
-  background: $dark-primary;
+  background: $primary;
   width: 100%;
   margin-bottom: 5px;
   height: 35px;
@@ -276,11 +257,8 @@ div.select-box::-webkit-scrollbar{
 
 .select-box .option:hover, .select-box .select-done:hover{
   cursor: pointer;
-  background: $dark-primary;
-}
-
-.save:hover{
-    box-shadow: 0 4px 8px 0 rgba(230, 74, 25, 0.5), 0 6px 20px 0 rgba(230, 74, 25, 0.49);
+  background: $text-icons;
+  color: black;
 }
 
 .row #Components .input {
@@ -322,7 +300,10 @@ div.select-box::-webkit-scrollbar{
   width: 90%;
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16pt;
+  margin: 10px 0;
 }
 
 .dice {
@@ -331,21 +312,32 @@ div.select-box::-webkit-scrollbar{
   margin: 0 10px;
 }
 
+.dice-id {
+  margin-right: 10px;
+}
+
 .n-dice {
-  
+
 }
 
-.wheel-container {
-  width: 400px;
+.damage .damage-type {
+  margin-right: 5px;
 }
 
-.wheel {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  position: relative;
+.damage .damage-type:hover {
+  cursor: pointer;
 }
 
-.wheel-item {
+.damage .delete-damage {
+  position: absolute;
+  right: 5px;
+  background-color: $text-icons;
+  color: black;
+  width: 30px;
   text-align: center;
+  border-radius: 50%;
+}
+
+.damage .delete-damage:hover {
+  cursor: pointer;
 }
