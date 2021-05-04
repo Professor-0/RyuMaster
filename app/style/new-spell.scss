@@ -1,11 +1,14 @@
-$dark-primary: #E64A19;
-$light-primary: #a714a2;
-$primary: #600c5c;
+$dark-primary: #BDBDBD;
+$light-primary: #BDBDBD;
+$primary: #197279 ;
 $text-icons: #FFFFFF;
-$accent: #2384a0;
-$primary-text: #212121;
-$secondary-text: #757575;
+$accent: #e68b5f;
+$accent2: #ff8a5b;
+$primary-text: #000;
+$secondary-text: #BDBDBD;
 $divider: #BDBDBD;
+
+$logo-colour: #BDBDBD;
 
 $box-colour: #b2b2b2;
 
@@ -97,7 +100,7 @@ label{
 }
 
 .row .cell:hover, .row .cell-text:hover {
-  box-shadow: 0 4px 8px 0 rgba(101, 44, 140, 0.7), 0 6px 20px 0 rgba(101, 44, 140, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(9, 9, 9, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
 }
 
 .row .cell .input, .row .cell-text .input {
@@ -192,7 +195,7 @@ div:focus{
   top: 50%;
   padding: 0;
   background: $primary;
-  box-shadow: 0 4px 8px 0 rgba(101, 44, 140, 0.7), 0 6px 20px 0 rgba(101, 44, 140, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(9, 9, 9, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
   display: flex;
   flex-direction: column;
   left: 50%;
@@ -272,11 +275,12 @@ div.select-box::-webkit-scrollbar{
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  line-height: 50px;
+  box-sizing: border-box;
+  line-height: 44px;
   text-align: center;
   margin: 2px;
-  border: $light-primary 1px solid;
-  color: $light-primary
+  border: $accent 3px solid;
+  color: $accent
 }
 
 .add-damage {

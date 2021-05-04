@@ -10,14 +10,9 @@
 <div class="drag-bar">
     Ryu Master
 
-    <div id="close" class="caption-btn" onclick="currWindow.close()">&#9587;</div>
-    <div id="max" class="caption-btn" onclick="{
-        if (currWindow.isMaximized()) {
-        currWindow.restore()
-        } else {
-            currWindow.maximize()
-        }}">&#9744;</div>
-    <div id="min" class="caption-btn" onclick="currWindow.minimize()">&#8210;</div>
+    <div id="close" class="caption-btn">&#9587;</div>
+    <div id="max" class="caption-btn">&#9744;</div>
+    <div id="min" class="caption-btn">&#8210;</div>
     <div class="window-title">New Spell</div>
 </div>
 <div class="client-area">
@@ -39,14 +34,14 @@
                     <div class="title">
                         Level
                     </div>
-                    <div class="input" onclick="change_level(this)">Cantrip</div>
+                    <div class="input">Cantrip</div>
                 </div>
 
                 <div id="spell-school" class="cell">
                     <div class="title">
                         School
                     </div>
-                    <div class="input" onclick="chooseData('schools', 'School', 'schoolInput')"></div>
+                    <div class="input"></div>
                 </div>
 
             </div>
@@ -62,7 +57,7 @@
                     <div class="title">
                         Cast Action
                     </div>
-                    <div class="input" onclick="chooseData('castActions', 'Cast Action', 'castActionInput')"></div>
+                    <div class="input"></div>
                 </div>
 
             </div>
@@ -88,7 +83,7 @@
                         Damages
                     </div>
                     <div class="input">
-                        <div class="add-damage" onclick="addDamage(this)">+</div>
+                        <div class="add-damage">+</div>
                     </div>
                 </div>
             </div>
@@ -104,9 +99,9 @@
                 <div id="Components" class="cell">
                     <div class="title">Components</div>
                     <div class="input">
-                        <div id="verbal" class="component" onclick="toggleComponent(0, this)">V</div>
-                        <div id="somatic" class="component" onclick="toggleComponent(1, this)">S</div>
-                        <div id="material" class="component" onclick="toggleComponent(2, this)">M</div>
+                        <div id="verbal" class="component">V</div>
+                        <div id="somatic" class="component">S</div>
+                        <div id="material" class="component">M</div>
                     </div>
                 </div>
             </div>
@@ -130,7 +125,7 @@
                 <div class="title">
                     Save / To Hit
                 </div>
-                <div class="input" onclick="chooseMData('saves', 'Save', 'closeSaveSelect', this)">None
+                <div class="input">None
                 </div>
             </div>
         </div>
@@ -139,7 +134,7 @@
                 <div class="title">
                     Effects
                 </div>
-                <div class="input" onclick="chooseMData('effects', 'Effects', 'closeEffectSelect', this)">None
+                <div class="input">None
                 </div>
             </div>
         </div>

@@ -1,22 +1,74 @@
-const {remote} = require("electron"), currWindow = remote.getCurrentWindow(),
-    appOptions = require("../data/Options.json"), appClientArea = document.querySelector('.client-area'),
-    appPageHolder = document.querySelector('.page-holder');
-const levelInput = document.querySelector('#spell-level .input'),
-    schoolInput = document.querySelector('#spell-school .input'),
-    castActionInput = document.querySelector('#spell-cast-action .input'),
-    components = [0,0,0], durationActionInput = document.querySelector('#spell-duration-action .input'),
-    toHitSaveInput = document.querySelector('#to-hit-save .input'),
-    effectInput = document.querySelector('#effect .input'),
-    damagesInput = document.querySelector('#spell-dmg .input'),
-    addDamageButton = document.querySelector('.add-damage');
-let selections = {};
-selections['saves'] = Array(appOptions.saves.length)
-selections['effects'] = Array(appOptions.effects.length)
-for (let i=0; i < selections['saves'].length; i++) selections['saves'][i] = 0;
-for (let i=0; i < selections['effects'].length; i++) selections['effects'][i] = 0;
+const appClientArea = document.querySelector('.client-area'),
+      appPageHolder = document.querySelector('.page-holder'),
+      levelInput    = document.querySelector('#spell-level .input'),
+      schoolInput   = document.querySelector('#spell-school .input'),
+      castActionInput     = document.querySelector('#spell-cast-action .input'),
+      durationActionInput = document.querySelector('#spell-duration-action .input'),
+      toHitSaveInput      = document.querySelector('#to-hit-save .input'),
+      effectInput         = document.querySelector('#effect .input'),
+      damagesInput        = document.querySelector('#spell-dmg .input'),
+      componentInput      = document.querySelector('#Components .input');
+      addDamageButton     = document.querySelector('.add-damage'),
+      saveButton          = document.querySelector('.save');
+
+let selections = {}, components = [0,0,0];
+
+let appOptions;
+
+let nextDamageId = 1;
+
+async function loadOptions() {
+  appOptions = await api.fetch('data', 'Options');
+
+  selections['saves'] = Array(appOptions.saves.length);
+  selections['effects'] = Array(appOptions.effects.length);
+
+  for (let i=0; i < selections['saves'].length; i++) selections['saves'][i] = 0;
+
+  for (let i=0; i < selections['effects'].length; i++) selections['effects'][i] = 0;
+}
+
+loadOptions();
+
+addDamageButton.addEventListener('click', () => {
+  addDamage();
+})
+
+for (let i = 0; i < 3; ++i) {
+  componentInput.children[i].addEventListener('click', () => {
+    toggleComponent(i, componentInput.children[i]);
+  })
+}
+
+toHitSaveInput.addEventListener('click', () => {
+  chooseMData('saves', 'To Hit / Save', toHitSaveInput);
+})
+
+effectInput.addEventListener('click', () => {
+  chooseMData('effects', 'Effect', effectInput)
+})
+
+levelInput.addEventListener('click', () => {
+  change_level(levelInput);
+})
+
+schoolInput.addEventListener('click', () => {
+  chooseData('schools', 'School', schoolInput);
+})
+
+castActionInput.addEventListener('click', () => {
+  chooseData('castActions', 'Cast Action', castActionInput);
+})
+
+saveButton.addEventListener('click', () => {
+  save();
+})
+
+for (let i = 0; i < 3; ++i) {
+
+}
 
 let damages = [];
-
 
 function change_level(elem) {
     let current = elem.innerHTML
@@ -42,19 +94,26 @@ function chooseData(dataName, title, holder) {
     let select = document.createElement('DIV');
     select.className = 'select-box';
     select.innerHTML = `<div class="title">Select ${title}</div>`;
+
+    let option;
     for (const datum in data){
         if (!data.hasOwnProperty(datum)) continue;
-        select.innerHTML +=
-            `
-                <div id="${data[datum] !== 'None' ? data[datum] : ''}" class="option" onclick="fillHolder(${holder}, this)">${data[datum]}</div>
-                `
+        option = document.createElement('DIV');
+        option.className = "option";
+        option.id = data[datum] !== 'None' ? data[datum] : ''
+        option.innerHTML = data[datum];
+        option.addEventListener('click', () => {
+          fillHolder(holder, data[datum]);
+        })
+        select.appendChild(option);
     }
+
     appClientArea.appendChild(screen);
     appClientArea.appendChild(select)
 }
 
 function fillHolder(holder, selected){
-    holder.innerHTML = selected.id;
+    holder.innerHTML = selected;
     appClientArea.removeChild(appClientArea.lastChild)
     appClientArea.removeChild(appClientArea.lastChild)
 }
@@ -62,32 +121,53 @@ function fillHolder(holder, selected){
 function toggleComponent(C, elem) {
     components[C] = !components[C];
     if (components[C]){
-        elem.style = "border: #fff solid 1px; color: #fff;"
+        elem.style = "color: #fff; background: #e68b5f"
     } else {
-        elem.style = "border: #2384a0 solid 1px; color: #2384a0;"
+        elem.style = "color: #e68b5f; background: none"
     }
 
 }
 
 
-function chooseMData(dataName, title, callback, elem) {
+function chooseMData(dataName, title, elem) {
     const data = appOptions[dataName];
+
     const screen = document.createElement('DIV');
     screen.className = 'focus-screen';
-    screen.onclick = () => closeMSelect(elem, closeSelect(dataName));
+    screen.addEventListener('click', () => closeMSelect(elem, closeSelect(dataName)));
+
     let select = document.createElement('DIV');
     select.className = 'select-box';
     select.innerHTML = `<div class="title">Select ${title}</div>`
-    for (const datum in data){
-        if (!data.hasOwnProperty(datum)) continue;
-        select.innerHTML +=
-            `
-                <div class="option" onclick="mToggle(this, ${datum}, '${dataName}')">${data[datum]}
-                <div class="check-holder">${selections[dataName][datum] ? "&check;" : ""}</div>   
-                </div>
+
+    const options = [];
+    let option;
+
+    for (let i = 0; i < data.length; ++i) {
+
+        option = document.createElement('DIV');
+        option.className = 'option';
+        option.innerHTML +=
+            ` ${data[i]}
+            <div class="check-holder">${selections[dataName][i] ? "&check;" : ""}</div>
                 `
+        select.appendChild(option);
+
+        options.push(option);
+        option.addEventListener('click', () => {
+          mToggle(options[i], i, dataName);
+        })
     }
-    select.innerHTML += `<div class="select-done" onclick="${callback}(closeSelect('${dataName}'))">Done</div>`
+
+    option = document.createElement('DIV');
+    option.className = 'select-done';
+    option.addEventListener('click', () => {
+      closeMSelect(elem, closeSelect(dataName));
+    })
+    option.innerHTML = "Done";
+
+    select.appendChild(option);
+
     appClientArea.appendChild(screen);
     appClientArea.appendChild(select)
 }
@@ -106,18 +186,10 @@ function closeMSelect(elem, str){
     elem.innerHTML = str.length ? str.join(', ') : 'None'
 }
 
-function closeSaveSelect(str) {
-    toHitSaveInput.innerHTML = str.length ? str.join(', ') : 'None'
-}
-
-function closeEffectSelect(str) {
-    effectInput.innerHTML = str.length ? str.join(', ') : 'None'
-}
-
 function closeSelect(dName) {
     let str = []
-    for (let i=0; i< selections[dName].length; i++){
-        if (selections[dName][i]){
+    for (let i=0; i< selections[dName].length; i++) {
+        if (selections[dName][i]) {
             str.push(appOptions[dName][i])
         }
     }
@@ -126,30 +198,48 @@ function closeSelect(dName) {
     return str
 }
 
-function addDamage(elem) {
+function addDamage() {
     if (!damages.length){
-        damagesInput.style="height: fit-content"
+        damagesInput.style="height: fit-content";
     }
-    const newDamage = document.createElement('DIV')
-    newDamage.className= 'damage'
+    const newDamage = document.createElement('DIV');
+    newDamage.className= 'damage';
+    newDamage.id = `dmg${nextDamageId}`;
+
+    const damageType = document.createElement('DIV');
+    damageType.className = 'damage-type';
+    damageType.innerHTML = 'force'
+    damageType.addEventListener('click', (event) => {
+      console.log(event);
+      chooseData('damages', 'Damage Type', event.target)
+    })
+
+    const del = document.createElement('DIV');
+    del.className = 'delete-damage';
+    del.innerHTML = '&#8210;'
+    del.addEventListener('click', (event) => {
+      deleteDamage(event.path[1]);
+    })
+
     newDamage.innerHTML = `<div class="dice-id">${damages.length+1})</div>` +
         '<div class="dice">' +
         '<div class="n-dice" contenteditable="true">1</div>d<div class="dice-num" contenteditable="true">10</div>' +
-        `</div><div class="damage-type" onclick="chooseData('damages', 'Damage', 'damages[${damages.length}].children[2]')">psychic</div> damage` +
-        `<div class="delete-damage" onclick="deleteDamage(${damages.length})">&#8210;</div>`
-    damagesInput.appendChild(newDamage)
-    damagesInput.appendChild(addDamageButton)
-    damages.push(newDamage)
+        `</div>`
+
+    newDamage.appendChild(damageType);
+    newDamage.appendChild(del);
+
+    damagesInput.appendChild(newDamage);
+    damagesInput.appendChild(addDamageButton);
+    damages.push(newDamage);
+    nextDamageId += 1;
 }
 
-function deleteDamage(id){
+function deleteDamage(elem) {
+    elem.remove();
     damages[id].remove();
     for (let i = id + 1; i < damages.length; ++i){
         damages[i].children[0].innerHTML = i + ")";
-        damages[i].children[2].onclick = () =>
-            chooseData('damages', 'Damage', `damages[${i - 1}].children[2]`);
-        damages[i].children[3].onclick = () =>
-            deleteDamage(i - 1);
     }
     damages.splice(id, 1);
 

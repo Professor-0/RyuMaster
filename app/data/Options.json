@@ -9,5 +9,97 @@
     "Deception", "Detection", "Dunamancy", "Environment", "Exploration", "Foreknowledge", "Healing", "Movement",
     "Negation", "Psionic", "Scrying", "Shapechanging", "Social", "Summoning", "Teleportation", "Utility", "Warding"],
   "damages": ["Acid", "Bludgeoning", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Piercing", "Poison", "Psychic",
-    "Radiant", "Slashing", "Thunder"]
+    "Radiant", "Slashing", "Thunder"],
+  "skills":[
+    {
+      "name": "acrobatics",
+      "display": "ACROBATICS",
+      "att": "dex"
+    },
+    {
+      "name": "animal",
+      "display": "ANIMAL HANDLING",
+      "att": "wis"
+    },
+    {
+      "name": "arcana",
+      "display": "ARCANA",
+      "att": "int"
+    },
+    {
+      "name": "athletics",
+      "display": "ATHLETICS",
+      "att": "str"
+    },
+    {
+      "name": "deception",
+      "display": "DECEPTION",
+      "att": "cha"
+    },
+    {
+      "name": "history",
+      "display": "HISTORY",
+      "att": "int"
+    },
+    {
+      "name": "insight",
+      "display": "INSIGHT",
+      "att": "wis"
+    },
+    {
+      "name": "intimidation",
+      "display": "INTIMIDATION",
+      "att": "cha"
+    },
+    {
+      "name": "investigation",
+      "display": "INVESTIGATION",
+      "att": "int"
+    },
+    {
+      "name": "medicine",
+      "display": "MEDICINE",
+      "att": "wis"
+    },
+    {
+      "name": "nature",
+      "display": "NATURE",
+      "att": "int"
+    },
+    {
+      "name": "perception",
+      "display": "PERCEPTION",
+      "att": "wis"
+    },
+    {
+      "name": "performance",
+      "display": "PERFORMANCE",
+      "att": "cha"
+    },
+    {
+      "name": "persuasion",
+      "display": "PERSUASION",
+      "att": "cha"
+    },
+    {
+      "name": "religion",
+      "display": "RELIGION",
+      "att": "int"
+    },
+    {
+      "name": "sleight",
+      "display": "SLEIGHT OF HAND",
+      "att": "dex"
+    },
+    {
+      "name": "stealth",
+      "display": "STEALTH",
+      "att": "dex"
+    },
+    {
+      "name": "survival",
+      "display": "SURVIVAL",
+      "att": "wis"
+    }
+  ]
 }
