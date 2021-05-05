@@ -5,7 +5,7 @@ const {
   session
 } = require('electron');
 
-const fs = require('fs/promises');
+const fs = require('fs').promises;
 const path = require('path');
 
 const appPath = path.join(__dirname, 'app');
@@ -36,7 +36,7 @@ function createMainWindow() {
     minWidth: 500,
     minHeight: 500,
     frame: false,
-    icon: path.join(appPath, 'icons', 'haruhi.ico'),
+    icon: path.join(appPath, 'imgs', 'haruhi.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -148,7 +148,7 @@ ipcMain.on('create-new', (event, type) => {
       minWidth: 500,
       minHeight: 500,
       frame: false,
-      icon: path.join(appPath, 'icons', 'haruhi.ico'),
+      icon: path.join(appPath, 'imgs', 'haruhi.png'),
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
@@ -161,16 +161,19 @@ ipcMain.on('create-new', (event, type) => {
 })
 
 ipcMain.on('save', async (event, data) => {
-  let file = await fs.readFile(path.join(appPath, 'data', data.type + 'json'), 'utf8');
+  let file = await fs.readFile(path.join(appPath, 'data', data.type + '.json'), 'utf8');
 
   file =  JSON.parse(file);
 
   if (file.push === undefined) {
-    file[data.data.name] = data.data;
+    console.log(data.data);
+    for (const key of Object.keys(data.data)) {
+      file[key] = data.data[key];
+    }
   } else {
     file.push(data.data);
   }
 
-  fs.writeFile(path.join(appPath, 'data', data.type + 'json'), JSON.stringify(file));
+  fs.writeFile(path.join(appPath, 'data', data.type + '.json'), JSON.stringify(file));
 
 })

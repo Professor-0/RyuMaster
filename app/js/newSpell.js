@@ -17,6 +17,66 @@ let appOptions;
 
 let nextDamageId = 1;
 
+String.prototype.replaceAt = function (index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+};
+
+String.prototype.replaceAll = function (searcher, replacement) {
+    let str = '', i = 0;
+    for (; i < this.length; i++) {
+        if (this[i] === searcher) {
+            str += replacement
+        } else {
+            str += this[i]
+        }
+    }
+    return str
+};
+
+function makeNameNice(name) {
+  let nice = name.replaceAll(' ', '_');
+  nice = nice.toLowerCase();
+  return nice;
+}
+
+function dmgToStr(dmg) {
+  const c = dmg.children;
+
+  return c[1] + 'd' + c[2] + c[3];
+}
+
+
+function save() {
+  let name = makeNameNice(document.querySelector('#spell-name .input').innerHTML);
+  console.log(damagesInput.children);
+  let data = {
+    casting_time: document.querySelector('#spell-cast-time .input').innerHTML +
+                  ' ' + castActionInput.innerHTML,
+    desc: document.querySelector('#spell-desc .input').innerHTML,
+    duration: document.querySelector('#spell-duration .input').innerHTML,
+    material: document.querySelector('#materials .input').innerHTML,
+    name: document.querySelector('#spell-name .input').innerHTML,
+    range: document.querySelector('#spell-range-area .input').innerHTML,
+    save: toHitSaveInput.innerHTML.split(', '),
+    components: components,
+    school: schoolInput.innerHTML,
+  }
+  let dmgs = [];
+  for (const d of damagesInput.children) {
+    if (d.className === '.damage') {
+      dmgs.push(dmgToStr(d));
+    }
+  }
+  if (levelInput.innerHTML === 'Cantrip') {
+    data.level = 0;
+  } else {
+    data.level = parseInt(levelInput.innerHTML);
+  }
+  let capsule = {};
+  capsule[name] = data;
+  api.save('Spells', capsule);
+}
+
 async function loadOptions() {
   appOptions = await api.fetch('data', 'Options');
 
@@ -237,10 +297,4 @@ function addDamage() {
 
 function deleteDamage(elem) {
     elem.remove();
-    damages[id].remove();
-    for (let i = id + 1; i < damages.length; ++i){
-        damages[i].children[0].innerHTML = i + ")";
-    }
-    damages.splice(id, 1);
-
 }
