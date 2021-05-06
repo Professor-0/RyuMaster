@@ -148,7 +148,7 @@ async function load_spells() {
 
     }
     if (changed){
-        api.updateSpells(appInnerPage.innerHTML);
+        api.updateSpells(appPageHolder.innerHTML);
     }
     document.querySelector("#spell.new-item").addEventListener('click', () => {
       api.createNew('spell')
