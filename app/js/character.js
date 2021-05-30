@@ -286,7 +286,7 @@ function createControlBoard(i) {
   del.className = 'ctrl-btn';
   del.innerHTML = 'Delete';
   del.addEventListener('click', () => {
-    confirm_delete('character', i);
+    confirm_delete('Character', i);
   })
 
   board.appendChild(view);
@@ -299,7 +299,6 @@ function createControlBoard(i) {
 function createCharacterPreview(char, i) {
   let mods = {}, scores = {};
 
-  console.log(i);
   for (att of attributes) {
     scores[att] = char[att];
     mods[att] = score_to_mod(char[att]);

@@ -1,4 +1,7 @@
-const appClientArea = document.querySelector('.client-area'),
+const appCloseBtn   = document.querySelector('#close'),
+      appMaxBtn     = document.querySelector('#max'),
+      appMinBtn     = document.querySelector('#min'),
+      appClientArea = document.querySelector('.client-area'),
       appPageHolder = document.querySelector('.page-holder'),
       levelInput    = document.querySelector('#spell-level .input'),
       schoolInput   = document.querySelector('#spell-school .input'),
@@ -10,6 +13,22 @@ const appClientArea = document.querySelector('.client-area'),
       componentInput      = document.querySelector('#Components .input');
       addDamageButton     = document.querySelector('.add-damage'),
       saveButton          = document.querySelector('.save');
+
+
+
+appCloseBtn.addEventListener('click', () => {
+  api.window.second.close();
+})
+
+appMaxBtn.addEventListener('click', () => {
+  api.window.second.max();
+})
+
+appMinBtn.addEventListener('click', () => {
+  api.window.second.min();
+})
+
+
 
 let selections = {}, components = [0,0,0];
 

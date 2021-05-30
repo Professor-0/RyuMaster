@@ -15,6 +15,13 @@ contextBridge.exposeInMainWorld(
         }
         return ipcRenderer.invoke('fetch-' + channel, name);
       },
+      fetchDatum : (data, datum) => {
+        if (typeof data != 'string' || data.includes('.') ||
+            typeof datum != 'string' || datum.includes('.')) {
+              throw new Error("Invalid Data or Datum");
+        }
+        return ipcRenderer.invoke('fetch-datum', {data: data, datum:datum});
+      },
       delete : (channel, data) => {
         let validChannels = ["data"];
 

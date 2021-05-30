@@ -10,6 +10,8 @@ const path = require('path');
 
 const appPath = path.join(__dirname, 'app');
 
+const dataCache = {};
+
 let mainWindow;
 
 let secondWindow;
@@ -87,12 +89,27 @@ ipcMain.handle('fetch-page', async (event, pageName) => {
 })
 
 ipcMain.handle('fetch-data', async (event, dataName) => {
-  let data = await fs.readFile(path.join(appPath, 'data', dataName + '.json'),
-   'utf8');
+  if (!(dataName in dataCache)) {
+    const data = await fs.readFile(path.join(appPath, 'data', dataName + '.json'),
+     'utf8');
 
-  data = JSON.parse(data);
+    dataCache[dataName] = JSON.parse(data);
+  }
 
-  return data;
+  return dataCache[dataName];
+})
+
+ipcMain.handle('fetch-datum', async (event, dataPath) => {
+  if (!(dataPath.data in dataCache)) {
+    const data = await fs.readFile(path.join(appPath, 'data', dataPath.data +
+                                   '.json'), 'utf8');
+
+    dataCache[dataPath.data] = JSON.parse(data);
+  }
+  console.log(dataPath.datum);
+  console.log(dataCache[dataPath.data][dataPath.datum]);
+
+  return dataCache[dataPath.data][dataPath.datum];
 })
 
 ipcMain.on('delete-data', async (event, deletion) => {

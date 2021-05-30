@@ -480,7 +480,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); }
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 4; }
 
 div.side-bar::-webkit-scrollbar {
   width: 0; }
@@ -530,27 +531,28 @@ div.side-bar::-webkit-scrollbar {
   background-color: #197279;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: #FFFFFF;
-  height: 60px;
+  height: fit-content;
   margin: 30px;
   position: relative;
   width: 80%; }
-
-.spell-box .name .text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap; }
 
 .spell-box:hover {
   box-shadow: 0 4px 8px 0 rgba(9, 9, 9, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39); }
 
 .spell-box .name {
-  background-color: #EDDDD4;
+  background: #197279;
   color: #FFFFFF;
   font-family: Luminari, Helvetica, sans-serif;
   font-size: 20pt;
   height: 100%;
   line-height: 60px;
-  padding-left: 10px; }
+  padding-left: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+
+.spell-box .name:hover {
+  cursor: pointer; }
 
 .letter-line {
   box-sizing: border-box;
@@ -587,7 +589,7 @@ div.side-bar::-webkit-scrollbar {
   cursor: pointer; }
 
 .confirm {
-  background-color: #FFFFFF;
+  background-color: #EDDDD4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 17pt;
   height: 200px;
@@ -600,18 +602,19 @@ div.side-bar::-webkit-scrollbar {
   z-index: 10; }
 
 .confirm .top {
-  background-color: #BDBDBD;
+  background-color: #197279;
   box-sizing: border-box;
   color: #FFFFFF;
+  text-align: center;
   height: 50px;
   line-height: 50px;
   padding-left: 10px;
   width: 100%; }
 
 .confirm .body {
-  background-color: #197279;
+  background-color: #d9f3f5;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #197279;
   height: 100px;
   padding: 10px;
   width: 100%; }
@@ -661,7 +664,7 @@ div.side-bar::-webkit-scrollbar {
   display: table-cell;
   vertical-align: middle; }
 
-.campaign-board {
+.board {
   display: grid;
   height: 100%;
   position: relative; }
@@ -741,5 +744,42 @@ div.side-bar::-webkit-scrollbar {
 
 .right-shade {
   position: absolute; }
+
+.spell-preview {
+  width: 100%;
+  height: fit-content; }
+  .spell-preview .spell-item {
+    padding: 5px;
+    width: 50%;
+    height: 20px;
+    line-height: 20px; }
+  .spell-preview .description {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: solid 3px white;
+    padding: 5px; }
+  .spell-preview .classes {
+    margin-top: 15px;
+    padding: 5px; }
+
+.box {
+  background: #d9f3f5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #197279;
+  position: relative; }
+
+.box:hover {
+  box-shadow: 0 4px 8px 0 rgba(9, 9, 9, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39); }
+
+.toggle-preview {
+  color: #FFFFFF;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 20pt;
+  line-height: 60px; }
+
+.toggle-preview:hover {
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

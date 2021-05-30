@@ -1,5 +1,5 @@
 $dark-primary: #BDBDBD;
-$light-primary: #BDBDBD;
+$light-primary: #d9f3f5;
 $primary: #197279 ;
 $text-icons: #FFFFFF;
 $accent: #e68b5f;
@@ -580,6 +580,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 4;
 }
 
 div.side-bar::-webkit-scrollbar {
@@ -637,16 +638,10 @@ div.side-bar::-webkit-scrollbar {
   background-color: $primary;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: $text-icons;
-  height: 60px;
+  height: fit-content;
   margin: 30px;
   position: relative;
   width: 80%;
-}
-
-.spell-box .name .text{
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .spell-box:hover {
@@ -654,13 +649,20 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .spell-box .name {
-  background-color: $box-colour;
+  background: $primary;
   color: $text-icons;
   font-family: Luminari, Helvetica, sans-serif;
   font-size: 20pt;
   height: 100%;
   line-height: 60px;
   padding-left: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.spell-box .name:hover {
+  cursor: pointer;
 }
 
 .letter-line {
@@ -702,7 +704,7 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .confirm {
-  background-color: #FFFFFF;
+  background-color: $box-colour;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 17pt;
   height: 200px;
@@ -716,9 +718,10 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .confirm .top {
-  background-color: $dark-primary;
+  background-color: $primary;
   box-sizing: border-box;
   color: $text-icons;
+  text-align: center;
   height: 50px;
   line-height: 50px;
   padding-left: 10px;
@@ -726,9 +729,9 @@ div.side-bar::-webkit-scrollbar {
 }
 
 .confirm .body {
-  background-color: $primary;
+  background-color: $light-primary;
   box-sizing: border-box;
-  color: $text-icons;
+  color: $primary;
   height: 100px;
   padding: 10px;
   width: 100%;
@@ -787,7 +790,7 @@ div.side-bar::-webkit-scrollbar {
   vertical-align: middle;
 }
 
-.campaign-board {
+.board {
   display: grid;
   height: 100%;
   position: relative;
@@ -883,4 +886,51 @@ div.side-bar::-webkit-scrollbar {
 .right-shade {
   position: absolute;
 
+}
+
+.spell-preview {
+  width: 100%;
+  height: fit-content;
+
+  .spell-item {
+    padding: 5px;
+    width: 50%;
+    height: 20px;
+    line-height: 20px;
+  }
+  .description {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: solid 3px white;
+    padding: 5px;
+  }
+  .classes {
+    margin-top: 15px;
+    padding: 5px;
+  }
+}
+
+
+.box {
+  background: $light-primary;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: $primary;
+  position: relative;
+}
+
+.box:hover {
+  box-shadow: 0 4px 8px 0 rgba(9, 9, 9, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
+}
+
+.toggle-preview {
+    color: $text-icons;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 20pt;
+    line-height: 60px;
+}
+
+.toggle-preview:hover {
+  cursor: pointer;
 }

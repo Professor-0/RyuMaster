@@ -97,7 +97,7 @@ async function confirm_delete(type, index) {
     confirm.querySelector('#button-confirm').addEventListener('click', () => {
       delete_data(type, index);
     })
-    confirm.querySelector('#button-confirm').addEventListener('click', () => {
+    confirm.querySelector('#button-cancel').addEventListener('click', () => {
       appClientArea.removeChild(appClientArea.lastChild);
       appClientArea.removeChild(appClientArea.lastChild);
     })
@@ -113,52 +113,34 @@ function delete_data(type, index) {
   change_page(type + 's');
 }
 
-async function load_spells() {
-    const spells = await api.fetch('data', 'Spells');
+function create_board(type) {
+  const nameQuery = document.createElement('DIV');
+  nameQuery.className = "pop-up";
+  nameQuery.innerHTML = `
+      Enter name for new ${type}:
+  `;
 
-    let i = 3, changed = false, current_letter = ' ';
-    for (const spell in spells) {
-        if (spells.hasOwnProperty(spell)) {
-            i++;
-            if (appInnerPage.querySelector('#' + spell) === null) {
-                if (!spell.startsWith(current_letter)) {
-                    current_letter = spell[0];
+  const queryInput = document.createElement('DIV');
+  queryInput.className = "input";
 
-                    if (appInnerPage.querySelector('#' + current_letter + '-line') === null) {
-                        let bar = document.createElement('DIV');
-                        bar.className = 'letter-line';
-                        bar.id = `${current_letter}-line`;
-                        bar.innerHTML = current_letter.toUpperCase();
-                        appInnerPage.insertBefore(bar, appInnerPage.children[i])
-                    }
+  nameQuery.appendChild(queryInput);
+}
 
-                    i++;
-                }
-                changed = true;
-                let elem = document.createElement('DIV');
-                elem.className = 'spell-box';
-                elem.id = spell;
-                elem.innerHTML = `<div class="name">
-                                            <div class="text">${spells[spell].name}</div>
-                                          </div>`;
-                appInnerPage.insertBefore(elem, appInnerPage.children[i])
-
-            }
-        }
-
-    }
-    if (changed){
-        api.updateSpells(appPageHolder.innerHTML);
-    }
-    document.querySelector("#spell.new-item").addEventListener('click', () => {
-      api.createNew('spell')
-    });
+function open_new(type) {
+  if (type === 'note' || type === 'campaign') {
+    create_board(type);
+  } else {
+    api.createNew(type);
+  }
 }
 
 async function change_page(page) {
     appPageHolder.innerHTML = await api.fetch('page', page);
     current_page = page;
     appInnerPage = document.querySelector('#' + page);
+    document.querySelector(".new-item").addEventListener('click', (event) => {
+      open_new(event.target.id);
+    });
     let characterElem;
     if (page === 'Characters') {
         const char = await api.fetch('data', 'Characters');
@@ -270,15 +252,14 @@ appMinBtn.addEventListener('click', () => {
   api.window.main.min();
 })
 
-
 if (window.outerWidth > 600) {
     open_bar();
     appSideBar.style.position = 'relative';
-    appPageHolder.style.borderLeft = '0'
+    appPageHolder.style.borderLeft = '0';
 } else if (window.outerWidth > 350) {
     close_bar();
 } else {
     window.resizeTo(350, window.outerHeight)
 }
 
-change_page('Characters')
+change_page('Spells')
